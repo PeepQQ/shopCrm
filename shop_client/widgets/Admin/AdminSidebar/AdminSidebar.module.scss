@@ -1,0 +1,46 @@
+.adminSidebarWrapper {
+  height: 100%;
+}
+
+.adminSidebar {
+  background: var(--background-gradient);
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: var(--gradient-shadow);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-x: hidden;
+  width: 10px;
+  transition: 0.2s;
+
+  * {
+    opacity: 0;
+    transition: 0.2s;
+  }
+
+  &:hover {
+    width: 100%;
+
+    * {
+      opacity: 1;
+    }
+  }
+
+  .createPanelAction {
+    font-size: 16px;
+    padding: 12px 32px;
+  }
+}
+
+.panelsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.panelListItem {
+  padding: 0 0 8px 0;
+  border-bottom: 1px black solid;
+}

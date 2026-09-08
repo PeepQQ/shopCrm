@@ -1,0 +1,43 @@
+.modalWrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.188);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  max-width: 400px;
+  width: 100%;
+  background: var(--background-gradient);
+  padding: 32px 40px;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  gap: 16px;
+}
+
+.modalClose {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 100%;
+}
+
+.modalContent {
+  width: 100%;
+}
+
+.modalActions {
+  width: 100%;
+  margin-top: 8px;
+}

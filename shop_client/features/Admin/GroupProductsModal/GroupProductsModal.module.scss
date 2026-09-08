@@ -1,0 +1,28 @@
+.modal {
+  max-width: 800px;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.otherProducts,
+.groupProducts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.otherProduct,
+.groupProduct {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.062);
+  }
+}

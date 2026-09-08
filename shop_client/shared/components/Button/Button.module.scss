@@ -1,0 +1,22 @@
+.button {
+  font-family: var(--font-text);
+  line-height: 100%;
+  cursor: pointer;
+  transition: 0.4s all;
+
+  &.fullWidth {
+    width: 100%;
+  }
+}
+
+.primary {
+  background: var(--background-gradient);
+  font-size: 18px;
+  padding: 16px 8px;
+  border-radius: 16px;
+  box-shadow: var(--gradient-shadow);
+
+  &:hover {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,40 @@
+.tableProducts {
+  border-collapse: collapse;
+  width: 100%;
+
+  thead {
+    th {
+      padding: 4px;
+      font-family: var(--font-head);
+      text-align: center;
+
+      &:first-child {
+        text-align: left;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px rgba(0, 0, 0, 0.225) solid;
+    }
+
+    td {
+      padding: 4px;
+      font-family: var(--font-text);
+      text-align: center;
+
+      &:first-child {
+        text-align: left;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+}

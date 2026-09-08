@@ -1,0 +1,6 @@
+.panelLayout {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 16px;
+  height: 100%;
+}

@@ -1,0 +1,11 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.productItem {
+  padding: 8px 0px;
+  border-bottom: 1px rgba(0, 0, 0, 0.221) solid;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

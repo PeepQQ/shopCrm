@@ -1,0 +1,27 @@
+.panelHeader {
+  background: var(--background-gradient);
+  border-radius: 16px;
+  box-shadow: var(--gradient-shadow);
+  padding: 16px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.menu {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.menuItem {
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    font-weight: 600;
+  }
+}

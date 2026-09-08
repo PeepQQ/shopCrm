@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  background: var(--background-gradient);
+  box-shadow: var(--gradient-shadow);
+  border-radius: 16px;
+}
+
+.navigation {
+  flex: 1;
+}
+
+.navigationList {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+
+.navigationItem {
+  font-size: 18px;
+}

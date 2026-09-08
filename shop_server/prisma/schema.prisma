@@ -1,0 +1,107 @@
+datasource db {
+  provider = "postgres"
+}
+
+generator client {
+  provider      = "prisma-client"
+  output        = "../src/generated/prisma"
+  moduleFormat  = "cjs"
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
+
+model User {
+  id    Int     @default(autoincrement()) @id
+  email String  @unique
+  name  String?
+  password String
+  role    UserRole @default(USER)
+
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  id        Int      @id @default(autoincrement())
+  tokenHash String   @unique
+  userId    Int
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Panel {
+  id      Int @id @default(autoincrement())
+  name    String @unique
+
+  groups   Group[]
+  products  Product[]
+  sales     Sale[]
+}
+
+model Group {
+  id      Int @id @default(autoincrement())
+  parentId    Int?
+  panelId     Int
+  name        String
+
+  parent   Group?  @relation("GroupHierarchy", fields: [parentId], references: [id])
+  panel    Panel  @relation(fields: [panelId], references: [id])
+  children Group[] @relation("GroupHierarchy")
+
+  groupProducts GroupProducts[]
+}
+
+model Product {
+  id      Int @id @default(autoincrement())
+  name    String
+  cost    Int
+  panelId Int
+  count   Int @default(0)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  groupProducts GroupProducts[]
+  panel    Panel  @relation(fields: [panelId], references: [id])
+  saleItems    SaleItem[]
+}
+
+model GroupProducts {
+  id      Int @id @default(autoincrement())
+  productId Int
+  groupId   Int
+
+  product Product @relation(fields: [productId], references: [id])
+  group Group @relation(fields: [groupId], references: [id])
+
+  @@unique([groupId, productId])
+}
+
+model Sale {
+  id      Int @id @default(autoincrement())
+  panelId     Int
+  total       Decimal @db.Decimal(12, 2)
+  createdAt   DateTime @default(now())
+
+  saleItems   SaleItem[]
+  panel   Panel @relation(fields: [panelId], references: [id])
+}
+
+model SaleItem {
+  id      Int @id @default(autoincrement())
+  saleId    Int
+  productId   Int
+  count       Int
+  discountPercent   Int
+  price       Decimal @db.Decimal(12, 2)
+
+  sale      Sale    @relation(fields: [saleId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+}
