@@ -3,3 +3,4 @@ export { PanelSettings } from "./PanelSettings";
 export { PanelHeader } from "./PanelHeader";
 export { PanelTable } from "./PanelTable";
 export { PanelSalesList } from "./PanelSalesList";
+export { PanelLayout } from "./Layout";

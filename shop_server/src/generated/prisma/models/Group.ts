@@ -43,6 +43,7 @@ export type GroupMinAggregateOutputType = {
   parentId: number | null
   panelId: number | null
   name: string | null
+  type: $Enums.GroupType | null
 }
 
 export type GroupMaxAggregateOutputType = {
@@ -50,6 +51,7 @@ export type GroupMaxAggregateOutputType = {
   parentId: number | null
   panelId: number | null
   name: string | null
+  type: $Enums.GroupType | null
 }
 
 export type GroupCountAggregateOutputType = {
@@ -57,6 +59,7 @@ export type GroupCountAggregateOutputType = {
   parentId: number
   panelId: number
   name: number
+  type: number
   _all: number
 }
 
@@ -78,6 +81,7 @@ export type GroupMinAggregateInputType = {
   parentId?: true
   panelId?: true
   name?: true
+  type?: true
 }
 
 export type GroupMaxAggregateInputType = {
@@ -85,6 +89,7 @@ export type GroupMaxAggregateInputType = {
   parentId?: true
   panelId?: true
   name?: true
+  type?: true
 }
 
 export type GroupCountAggregateInputType = {
@@ -92,6 +97,7 @@ export type GroupCountAggregateInputType = {
   parentId?: true
   panelId?: true
   name?: true
+  type?: true
   _all?: true
 }
 
@@ -186,6 +192,7 @@ export type GroupGroupByOutputType = {
   parentId: number | null
   panelId: number
   name: string
+  type: $Enums.GroupType
   _count: GroupCountAggregateOutputType | null
   _avg: GroupAvgAggregateOutputType | null
   _sum: GroupSumAggregateOutputType | null
@@ -216,6 +223,7 @@ export type GroupWhereInput = {
   parentId?: Prisma.IntNullableFilter<"Group"> | number | null
   panelId?: Prisma.IntFilter<"Group"> | number
   name?: Prisma.StringFilter<"Group"> | string
+  type?: Prisma.EnumGroupTypeFilter<"Group"> | $Enums.GroupType
   parent?: Prisma.XOR<Prisma.GroupNullableScalarRelationFilter, Prisma.GroupWhereInput> | null
   panel?: Prisma.XOR<Prisma.PanelScalarRelationFilter, Prisma.PanelWhereInput>
   children?: Prisma.GroupListRelationFilter
@@ -227,6 +235,7 @@ export type GroupOrderByWithRelationInput = {
   parentId?: Prisma.SortOrderInput | Prisma.SortOrder
   panelId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   parent?: Prisma.GroupOrderByWithRelationInput
   panel?: Prisma.PanelOrderByWithRelationInput
   children?: Prisma.GroupOrderByRelationAggregateInput
@@ -241,6 +250,7 @@ export type GroupWhereUniqueInput = Prisma.AtLeast<{
   parentId?: Prisma.IntNullableFilter<"Group"> | number | null
   panelId?: Prisma.IntFilter<"Group"> | number
   name?: Prisma.StringFilter<"Group"> | string
+  type?: Prisma.EnumGroupTypeFilter<"Group"> | $Enums.GroupType
   parent?: Prisma.XOR<Prisma.GroupNullableScalarRelationFilter, Prisma.GroupWhereInput> | null
   panel?: Prisma.XOR<Prisma.PanelScalarRelationFilter, Prisma.PanelWhereInput>
   children?: Prisma.GroupListRelationFilter
@@ -252,6 +262,7 @@ export type GroupOrderByWithAggregationInput = {
   parentId?: Prisma.SortOrderInput | Prisma.SortOrder
   panelId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   _count?: Prisma.GroupCountOrderByAggregateInput
   _avg?: Prisma.GroupAvgOrderByAggregateInput
   _max?: Prisma.GroupMaxOrderByAggregateInput
@@ -267,10 +278,12 @@ export type GroupScalarWhereWithAggregatesInput = {
   parentId?: Prisma.IntNullableWithAggregatesFilter<"Group"> | number | null
   panelId?: Prisma.IntWithAggregatesFilter<"Group"> | number
   name?: Prisma.StringWithAggregatesFilter<"Group"> | string
+  type?: Prisma.EnumGroupTypeWithAggregatesFilter<"Group"> | $Enums.GroupType
 }
 
 export type GroupCreateInput = {
   name: string
+  type: $Enums.GroupType
   parent?: Prisma.GroupCreateNestedOneWithoutChildrenInput
   panel: Prisma.PanelCreateNestedOneWithoutGroupsInput
   children?: Prisma.GroupCreateNestedManyWithoutParentInput
@@ -282,12 +295,14 @@ export type GroupUncheckedCreateInput = {
   parentId?: number | null
   panelId: number
   name: string
+  type: $Enums.GroupType
   children?: Prisma.GroupUncheckedCreateNestedManyWithoutParentInput
   groupProducts?: Prisma.GroupProductsUncheckedCreateNestedManyWithoutGroupInput
 }
 
 export type GroupUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
   parent?: Prisma.GroupUpdateOneWithoutChildrenNestedInput
   panel?: Prisma.PanelUpdateOneRequiredWithoutGroupsNestedInput
   children?: Prisma.GroupUpdateManyWithoutParentNestedInput
@@ -299,6 +314,7 @@ export type GroupUncheckedUpdateInput = {
   parentId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   panelId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
   children?: Prisma.GroupUncheckedUpdateManyWithoutParentNestedInput
   groupProducts?: Prisma.GroupProductsUncheckedUpdateManyWithoutGroupNestedInput
 }
@@ -308,10 +324,12 @@ export type GroupCreateManyInput = {
   parentId?: number | null
   panelId: number
   name: string
+  type: $Enums.GroupType
 }
 
 export type GroupUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
 }
 
 export type GroupUncheckedUpdateManyInput = {
@@ -319,6 +337,7 @@ export type GroupUncheckedUpdateManyInput = {
   parentId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   panelId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
 }
 
 export type GroupListRelationFilter = {
@@ -341,6 +360,7 @@ export type GroupCountOrderByAggregateInput = {
   parentId?: Prisma.SortOrder
   panelId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  type?: Prisma.SortOrder
 }
 
 export type GroupAvgOrderByAggregateInput = {
@@ -354,6 +374,7 @@ export type GroupMaxOrderByAggregateInput = {
   parentId?: Prisma.SortOrder
   panelId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  type?: Prisma.SortOrder
 }
 
 export type GroupMinOrderByAggregateInput = {
@@ -361,6 +382,7 @@ export type GroupMinOrderByAggregateInput = {
   parentId?: Prisma.SortOrder
   panelId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  type?: Prisma.SortOrder
 }
 
 export type GroupSumOrderByAggregateInput = {
@@ -436,6 +458,10 @@ export type GroupUncheckedCreateNestedManyWithoutParentInput = {
   connect?: Prisma.GroupWhereUniqueInput | Prisma.GroupWhereUniqueInput[]
 }
 
+export type EnumGroupTypeFieldUpdateOperationsInput = {
+  set?: $Enums.GroupType
+}
+
 export type GroupUpdateOneWithoutChildrenNestedInput = {
   create?: Prisma.XOR<Prisma.GroupCreateWithoutChildrenInput, Prisma.GroupUncheckedCreateWithoutChildrenInput>
   connectOrCreate?: Prisma.GroupCreateOrConnectWithoutChildrenInput
@@ -498,6 +524,7 @@ export type GroupUpdateOneRequiredWithoutGroupProductsNestedInput = {
 
 export type GroupCreateWithoutPanelInput = {
   name: string
+  type: $Enums.GroupType
   parent?: Prisma.GroupCreateNestedOneWithoutChildrenInput
   children?: Prisma.GroupCreateNestedManyWithoutParentInput
   groupProducts?: Prisma.GroupProductsCreateNestedManyWithoutGroupInput
@@ -507,6 +534,7 @@ export type GroupUncheckedCreateWithoutPanelInput = {
   id?: number
   parentId?: number | null
   name: string
+  type: $Enums.GroupType
   children?: Prisma.GroupUncheckedCreateNestedManyWithoutParentInput
   groupProducts?: Prisma.GroupProductsUncheckedCreateNestedManyWithoutGroupInput
 }
@@ -545,10 +573,12 @@ export type GroupScalarWhereInput = {
   parentId?: Prisma.IntNullableFilter<"Group"> | number | null
   panelId?: Prisma.IntFilter<"Group"> | number
   name?: Prisma.StringFilter<"Group"> | string
+  type?: Prisma.EnumGroupTypeFilter<"Group"> | $Enums.GroupType
 }
 
 export type GroupCreateWithoutChildrenInput = {
   name: string
+  type: $Enums.GroupType
   parent?: Prisma.GroupCreateNestedOneWithoutChildrenInput
   panel: Prisma.PanelCreateNestedOneWithoutGroupsInput
   groupProducts?: Prisma.GroupProductsCreateNestedManyWithoutGroupInput
@@ -559,6 +589,7 @@ export type GroupUncheckedCreateWithoutChildrenInput = {
   parentId?: number | null
   panelId: number
   name: string
+  type: $Enums.GroupType
   groupProducts?: Prisma.GroupProductsUncheckedCreateNestedManyWithoutGroupInput
 }
 
@@ -569,6 +600,7 @@ export type GroupCreateOrConnectWithoutChildrenInput = {
 
 export type GroupCreateWithoutParentInput = {
   name: string
+  type: $Enums.GroupType
   panel: Prisma.PanelCreateNestedOneWithoutGroupsInput
   children?: Prisma.GroupCreateNestedManyWithoutParentInput
   groupProducts?: Prisma.GroupProductsCreateNestedManyWithoutGroupInput
@@ -578,6 +610,7 @@ export type GroupUncheckedCreateWithoutParentInput = {
   id?: number
   panelId: number
   name: string
+  type: $Enums.GroupType
   children?: Prisma.GroupUncheckedCreateNestedManyWithoutParentInput
   groupProducts?: Prisma.GroupProductsUncheckedCreateNestedManyWithoutGroupInput
 }
@@ -605,6 +638,7 @@ export type GroupUpdateToOneWithWhereWithoutChildrenInput = {
 
 export type GroupUpdateWithoutChildrenInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
   parent?: Prisma.GroupUpdateOneWithoutChildrenNestedInput
   panel?: Prisma.PanelUpdateOneRequiredWithoutGroupsNestedInput
   groupProducts?: Prisma.GroupProductsUpdateManyWithoutGroupNestedInput
@@ -615,6 +649,7 @@ export type GroupUncheckedUpdateWithoutChildrenInput = {
   parentId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   panelId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
   groupProducts?: Prisma.GroupProductsUncheckedUpdateManyWithoutGroupNestedInput
 }
 
@@ -636,6 +671,7 @@ export type GroupUpdateManyWithWhereWithoutParentInput = {
 
 export type GroupCreateWithoutGroupProductsInput = {
   name: string
+  type: $Enums.GroupType
   parent?: Prisma.GroupCreateNestedOneWithoutChildrenInput
   panel: Prisma.PanelCreateNestedOneWithoutGroupsInput
   children?: Prisma.GroupCreateNestedManyWithoutParentInput
@@ -646,6 +682,7 @@ export type GroupUncheckedCreateWithoutGroupProductsInput = {
   parentId?: number | null
   panelId: number
   name: string
+  type: $Enums.GroupType
   children?: Prisma.GroupUncheckedCreateNestedManyWithoutParentInput
 }
 
@@ -667,6 +704,7 @@ export type GroupUpdateToOneWithWhereWithoutGroupProductsInput = {
 
 export type GroupUpdateWithoutGroupProductsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
   parent?: Prisma.GroupUpdateOneWithoutChildrenNestedInput
   panel?: Prisma.PanelUpdateOneRequiredWithoutGroupsNestedInput
   children?: Prisma.GroupUpdateManyWithoutParentNestedInput
@@ -677,6 +715,7 @@ export type GroupUncheckedUpdateWithoutGroupProductsInput = {
   parentId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   panelId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
   children?: Prisma.GroupUncheckedUpdateManyWithoutParentNestedInput
 }
 
@@ -684,10 +723,12 @@ export type GroupCreateManyPanelInput = {
   id?: number
   parentId?: number | null
   name: string
+  type: $Enums.GroupType
 }
 
 export type GroupUpdateWithoutPanelInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
   parent?: Prisma.GroupUpdateOneWithoutChildrenNestedInput
   children?: Prisma.GroupUpdateManyWithoutParentNestedInput
   groupProducts?: Prisma.GroupProductsUpdateManyWithoutGroupNestedInput
@@ -697,6 +738,7 @@ export type GroupUncheckedUpdateWithoutPanelInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   parentId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
   children?: Prisma.GroupUncheckedUpdateManyWithoutParentNestedInput
   groupProducts?: Prisma.GroupProductsUncheckedUpdateManyWithoutGroupNestedInput
 }
@@ -705,16 +747,19 @@ export type GroupUncheckedUpdateManyWithoutPanelInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   parentId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
 }
 
 export type GroupCreateManyParentInput = {
   id?: number
   panelId: number
   name: string
+  type: $Enums.GroupType
 }
 
 export type GroupUpdateWithoutParentInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
   panel?: Prisma.PanelUpdateOneRequiredWithoutGroupsNestedInput
   children?: Prisma.GroupUpdateManyWithoutParentNestedInput
   groupProducts?: Prisma.GroupProductsUpdateManyWithoutGroupNestedInput
@@ -724,6 +769,7 @@ export type GroupUncheckedUpdateWithoutParentInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   panelId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
   children?: Prisma.GroupUncheckedUpdateManyWithoutParentNestedInput
   groupProducts?: Prisma.GroupProductsUncheckedUpdateManyWithoutGroupNestedInput
 }
@@ -732,6 +778,7 @@ export type GroupUncheckedUpdateManyWithoutParentInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   panelId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumGroupTypeFieldUpdateOperationsInput | $Enums.GroupType
 }
 
 
@@ -779,6 +826,7 @@ export type GroupSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   parentId?: boolean
   panelId?: boolean
   name?: boolean
+  type?: boolean
   parent?: boolean | Prisma.Group$parentArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
   children?: boolean | Prisma.Group$childrenArgs<ExtArgs>
@@ -791,6 +839,7 @@ export type GroupSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   parentId?: boolean
   panelId?: boolean
   name?: boolean
+  type?: boolean
   parent?: boolean | Prisma.Group$parentArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["group"]>
@@ -800,6 +849,7 @@ export type GroupSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   parentId?: boolean
   panelId?: boolean
   name?: boolean
+  type?: boolean
   parent?: boolean | Prisma.Group$parentArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["group"]>
@@ -809,9 +859,10 @@ export type GroupSelectScalar = {
   parentId?: boolean
   panelId?: boolean
   name?: boolean
+  type?: boolean
 }
 
-export type GroupOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "parentId" | "panelId" | "name", ExtArgs["result"]["group"]>
+export type GroupOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "parentId" | "panelId" | "name" | "type", ExtArgs["result"]["group"]>
 export type GroupInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   parent?: boolean | Prisma.Group$parentArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
@@ -841,6 +892,7 @@ export type $GroupPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     parentId: number | null
     panelId: number
     name: string
+    type: $Enums.GroupType
   }, ExtArgs["result"]["group"]>
   composites: {}
 }
@@ -1272,6 +1324,7 @@ export interface GroupFieldRefs {
   readonly parentId: Prisma.FieldRef<"Group", 'Int'>
   readonly panelId: Prisma.FieldRef<"Group", 'Int'>
   readonly name: Prisma.FieldRef<"Group", 'String'>
+  readonly type: Prisma.FieldRef<"Group", 'GroupType'>
 }
     
 

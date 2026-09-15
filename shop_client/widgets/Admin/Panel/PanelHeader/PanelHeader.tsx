@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import styles from "./PanelHeader.module.scss";
-import { CreateProductModal } from "@/features/Admin/CreateProduct";
+import { ProductFormModal } from "@/features/Admin/ProductFormModal";
 import { links } from "@/shared/config/links";
 import { useParams } from "next/navigation";
 
@@ -16,9 +16,9 @@ export const PanelHeader = () => {
         >
           Настройки
         </Link>
-        <CreateProductModal>
+        <ProductFormModal>
           <span className={styles.menuItem}>Создать товар</span>
-        </CreateProductModal>
+        </ProductFormModal>
         <Link
           href={links.admin.panel(panelId).table.root}
           className={styles.menuItem}

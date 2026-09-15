@@ -29,11 +29,12 @@
   display: flex;
   gap: 4px;
   align-items: center;
+  padding-left: 6px;
 }
 
 .groupAction {
   cursor: pointer;
-  padding: 4px 0;
+  padding: 4px;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.061);

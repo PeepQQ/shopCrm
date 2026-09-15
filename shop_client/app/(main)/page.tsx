@@ -1,4 +1,4 @@
-import { HomeContent } from "@/layouts/Home";
+import { HomeContent } from "@/widgets/Home";
 
 export default function MainPage() {
   return <HomeContent />;

@@ -1,15 +1,20 @@
 import { Type } from 'class-transformer';
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString, IsEnum } from 'class-validator';
+import { GroupType } from 'src/generated/prisma/enums';
 
 export class CreateGroupDto {
+  @IsOptional()
   @IsNumber()
-  parentId!: number;
+  parentId?: number;
 
   @IsString()
   name!: string;
 
   @IsNumber()
   panelId!: number;
+
+  @IsEnum(GroupType)
+  type!: GroupType;
 }
 
 export class GetGroupListDto {

@@ -11,7 +11,6 @@ export default function LoginPage() {
   const handleLogin = async () => {
     try {
       const res = await login({ email, password });
-      console.log(res);
       router.push("/");
     } catch {}
   };

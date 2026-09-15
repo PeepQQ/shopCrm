@@ -5,4 +5,10 @@ export interface Group {
   name: string;
   children: Group[] | [];
   groupProducts: Product[] | [];
+  type: GroupType;
+}
+
+export enum GroupType {
+  PARENT = "PARENT",
+  FOLDER = "FOLDER",
 }

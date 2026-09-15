@@ -1,12 +1,16 @@
 import { PanelSettings } from "@/widgets/Admin/Panel";
-import type { PageProps } from "@/app/next.type";
+
+interface Props {
+  children: React.ReactNode;
+  params: Promise<{
+    panelId: string;
+  }>;
+}
 
 export default async function AdminPanelSettingsLayout({
-  params,
   children,
-}: PageProps & {
-  children: React.ReactNode;
-}) {
+  params,
+}: Props) {
   const { panelId } = await params;
 
   return <PanelSettings panelId={panelId}>{children}</PanelSettings>;

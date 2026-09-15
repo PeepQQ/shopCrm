@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": false,
     "strict": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "prisma.config.ts", "eslint.config.mjs"]
 }

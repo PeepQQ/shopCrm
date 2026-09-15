@@ -9,8 +9,6 @@ export const UserBar = () => {
   const router = useRouter();
   const user = useAppSelector((state) => state.user);
 
-  console.log(user);
-
   return (
     <div className={styles.userBar}>
       {user?.id ? (

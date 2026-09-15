@@ -1,1 +1,0 @@
-export { CreateProductModal } from "./CreateProductModal";

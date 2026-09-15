@@ -7,15 +7,20 @@ const api = axios.create({
   withCredentials: true,
 });
 
-interface CreateProductData {
+interface CreateUpdateProductData {
   name: string;
   cost: number;
-  count?: number;
   panelId: number;
 }
 
 export const createProduct = async (
-  data: CreateProductData,
+  data: CreateUpdateProductData,
 ): Promise<AxiosResponse<Product>> => {
   return await api.post("/admin/product/create", data);
+};
+
+export const updateProduct = async (
+  data: CreateUpdateProductData,
+): Promise<AxiosResponse<Product>> => {
+  return await api.post("/admin/product/update", data);
 };

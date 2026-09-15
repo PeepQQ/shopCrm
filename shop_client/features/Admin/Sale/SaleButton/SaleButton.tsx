@@ -22,16 +22,13 @@ export const SaleButton = () => {
       return saleItem;
     });
 
-    console.log(formattedSaleItems);
-
     try {
       const res = await createSale({
         panelId: Number(panelId),
         saleItems: formattedSaleItems,
       });
-      console.log(res);
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
 

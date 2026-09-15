@@ -28,7 +28,6 @@ export const AddToSaleCartModal = ({
   const dispatch = useAppDispatch();
 
   const addToSaleCart = (data: SaleItem) => {
-    console.log(data);
     dispatch(add(data));
   };
 

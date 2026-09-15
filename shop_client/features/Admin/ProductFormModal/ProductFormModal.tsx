@@ -1,30 +1,40 @@
 "use сlient";
 import { Button } from "@/shared/components/Button";
-import styles from "./CreateProductModal.module.scss";
+import styles from "./ProductFormModal.module.scss";
 import { Input } from "@/shared/components/Input";
 import {
   Modal,
-  ModalClose,
   ModalActions,
   ModalHeader,
   ModalContent,
 } from "@/shared/components/Modal";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { CreateProductData, createProductSchema } from "./config";
+import {
+  ProductFormData,
+  productFormSchema,
+  productFormFields,
+} from "./config";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { createProductFields } from "./config";
-import { createProduct } from "@/shared/api/client/Product.api";
+import { createProduct, updateProduct } from "@/shared/api/client/Product.api";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { Product } from "@/entities/product";
 
-export const CreateProductModal = ({
-  children,
-}: {
+interface ProductFormModalProps {
   children: React.ReactNode;
-}) => {
+  isEdit?: boolean;
+  editData?: Product;
+}
+
+export const ProductFormModal = ({
+  children,
+  isEdit,
+  editData,
+}: ProductFormModalProps) => {
+  const modalTitle = isEdit ? "Редактирование товара" : "Новый товар";
   const router = useRouter();
-  const param = useParams<{ panelId: string }>();
+  const { panelId } = useParams<{ panelId: string }>();
   const [isOpen, setIsOpen] = useState(false);
 
   const {
@@ -32,17 +42,13 @@ export const CreateProductModal = ({
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(createProductSchema),
+    resolver: yupResolver(productFormSchema),
   });
 
-  const close = () => {
-    setIsOpen(false);
-  };
-
-  const handleCreate = async (data: CreateProductData) => {
-    const postData = { ...data, panelId: Number(param.panelId) };
+  const handleData = async (data: ProductFormData) => {
+    const postData = { ...data, panelId: Number(panelId) };
     try {
-      const res = await createProduct(postData);
+      await (isEdit ? updateProduct : createProduct)(postData);
       setIsOpen(false);
       router.refresh();
     } catch (err) {
@@ -54,20 +60,23 @@ export const CreateProductModal = ({
     <>
       <Modal isOpen={isOpen} closeAction={() => setIsOpen(false)}>
         <ModalHeader>
-          <h3>Новый товар</h3>
+          <h3>{modalTitle}</h3>
         </ModalHeader>
         <ModalContent>
           <div className={styles.form}>
-            {createProductFields.map((field) => (
+            {productFormFields.map((field) => (
               <label key={field.name}>
                 <span>{field.label}</span>
-                <Input {...register(field.name)} />
+                <Input
+                  defaultValue={editData?.[field.name]}
+                  {...register(field.name)}
+                />
               </label>
             ))}
           </div>
         </ModalContent>
         <ModalActions>
-          <Button onClick={handleSubmit(handleCreate)} fullWidth>
+          <Button onClick={handleSubmit(handleData)} fullWidth>
             Подтвердить
           </Button>
         </ModalActions>

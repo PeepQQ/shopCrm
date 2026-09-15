@@ -1090,7 +1090,8 @@ export const GroupScalarFieldEnum = {
   id: 'id',
   parentId: 'parentId',
   panelId: 'panelId',
-  name: 'name'
+  name: 'name',
+  type: 'type'
 } as const
 
 export type GroupScalarFieldEnum = (typeof GroupScalarFieldEnum)[keyof typeof GroupScalarFieldEnum]
@@ -1223,6 +1224,20 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'GroupType'
+ */
+export type EnumGroupTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GroupType'>
+    
+
+
+/**
+ * Reference to a field of type 'GroupType[]'
+ */
+export type ListEnumGroupTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GroupType[]'>
     
 
 

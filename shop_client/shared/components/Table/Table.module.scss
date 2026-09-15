@@ -15,11 +15,19 @@
   border-bottom: 1px rgba(0, 0, 0, 0.088) solid;
 }
 
+.expandOpen {
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.034);
+  }
+}
+
 .extendContent {
   display: none;
 
   &.open {
-    display: block;
+    display: table-row;
   }
 }
 

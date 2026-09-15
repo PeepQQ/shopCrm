@@ -9,6 +9,9 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { ArrowLeftIcon } from "@/assets/icons";
 import clsx from "clsx";
+import { GroupFormModal } from "@/features/Admin/GroupFormModal";
+import { GroupType } from "@/entities/group/Group";
+import { DropMenu } from "../DropMenu";
 
 interface GroupItemProps {
   group: Group;
@@ -25,10 +28,11 @@ export const GroupItem = ({
   showEditActions = false,
   isLink = false,
 }: GroupItemProps) => {
+  console.log(group, group.id, showEditActions);
   const router = useRouter();
   const { panelId } = useParams<{ panelId: string }>();
   const [isOpen, setIsOpen] = useState(isInitialOpened);
-  const isShowEditActions = showEditActions && group.children.length === 0;
+  const isShowEditActions = showEditActions;
   const panelTableUrl = links.admin.panel(panelId).table.group(group.id);
 
   const hasChildren = group.children?.length > 0;
@@ -49,15 +53,34 @@ export const GroupItem = ({
       <div className={styles.groupHeader}>
         <span className={styles.groupName} onClick={clickAction}>
           {group.name}
-          {group.children.length > 1 && (
+          {group.children.length >= 1 && (
             <ArrowLeftIcon className={styles.arrow} width={12} height={12} />
           )}
         </span>
         {isShowEditActions && (
           <div className={styles.groupActions}>
-            <GroupProductsModal group={group}>
-              <button className={styles.groupAction}>Товары</button>
-            </GroupProductsModal>
+            {group.type === GroupType.PARENT && (
+              <>
+                <GroupFormModal
+                  parentId={group.id}
+                  groupType={GroupType.PARENT}
+                >
+                  <button className={styles.groupAction}>+ категория</button>
+                </GroupFormModal>
+                <GroupFormModal
+                  parentId={group.id}
+                  groupType={GroupType.FOLDER}
+                >
+                  <button className={styles.groupAction}>+ хранилище</button>
+                </GroupFormModal>
+              </>
+            )}
+            {group.type === GroupType.FOLDER && (
+              <GroupProductsModal group={group}>
+                <button className={styles.groupAction}>Товары</button>
+              </GroupProductsModal>
+            )}
+            <DropMenu>test</DropMenu>
           </div>
         )}
       </div>

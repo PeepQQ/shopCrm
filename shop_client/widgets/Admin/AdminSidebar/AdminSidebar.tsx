@@ -20,7 +20,7 @@ export const AdminSidebar = ({ panels }: AdminSidebarProps) => {
               <Link
                 key={panel.id}
                 className={styles.panelListItem}
-                href={links.admin.panel(panel.id).root}
+                href={links.admin.panel(panel.id).table.root}
               >
                 <h4>{panel.name}</h4>
               </Link>

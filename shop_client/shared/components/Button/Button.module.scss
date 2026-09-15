@@ -7,13 +7,22 @@
   &.fullWidth {
     width: 100%;
   }
+
+  &.default {
+    font-size: 18px;
+    padding: 16px 8px;
+    border-radius: 16px;
+  }
+
+  &.sm {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
 }
 
 .primary {
   background: var(--background-gradient);
-  font-size: 18px;
-  padding: 16px 8px;
-  border-radius: 16px;
   box-shadow: var(--gradient-shadow);
 
   &:hover {

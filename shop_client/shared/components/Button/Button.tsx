@@ -6,6 +6,7 @@ export const Button = ({
   children,
   className,
   variant = "primary",
+  size = "default",
   fullWidth,
   ...props
 }: ButtonProps) => {
@@ -15,6 +16,7 @@ export const Button = ({
         className,
         styles.button,
         styles[variant],
+        styles[size],
         fullWidth && styles.fullWidth,
       )}
       {...props}

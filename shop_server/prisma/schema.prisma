@@ -14,6 +14,11 @@ enum UserRole {
   SUPER_ADMIN
 }
 
+enum GroupType {
+  PARENT
+  FOLDER
+}
+
 model User {
   id    Int     @default(autoincrement()) @id
   email String  @unique
@@ -50,6 +55,7 @@ model Group {
   parentId    Int?
   panelId     Int
   name        String
+  type        GroupType
 
   parent   Group?  @relation("GroupHierarchy", fields: [parentId], references: [id])
   panel    Panel  @relation(fields: [panelId], references: [id])

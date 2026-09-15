@@ -1,20 +1,20 @@
 import * as yup from "yup";
 
-export const createProductSchema = yup.object().shape({
+export const productFormSchema = yup.object().shape({
   name: yup.string().required(),
   cost: yup.number().required(),
   count: yup.number().optional().default(0),
 });
 
-export type CreateProductData = yup.InferType<typeof createProductSchema>;
+export type ProductFormData = yup.InferType<typeof productFormSchema>;
 
 type field = {
-  name: keyof CreateProductData;
+  name: keyof ProductFormData;
   type: string;
   label: string;
 };
 
-export const createProductFields: field[] = [
+export const productFormFields: field[] = [
   {
     name: "name",
     type: "text",
@@ -24,10 +24,5 @@ export const createProductFields: field[] = [
     name: "cost",
     type: "number",
     label: "Цена",
-  },
-  {
-    name: "count",
-    type: "number",
-    label: "Количество(Необязатально)",
   },
 ];

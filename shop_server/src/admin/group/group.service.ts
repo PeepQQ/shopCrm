@@ -28,19 +28,8 @@ export class GroupService {
     const groups = await this.prisma.group.findMany({
       where: {
         panelId: data.panelId,
-        parentId: null,
       },
       include: {
-        children: {
-          include: {
-            groupProducts: {
-              include: {
-                product: true,
-              },
-            },
-          },
-        },
-
         groupProducts: {
           include: {
             product: true,
@@ -49,7 +38,9 @@ export class GroupService {
       },
     });
 
-    return mapGroupTree(groups);
+    const groupTree = mapGroupTree(groups);
+
+    return groupTree;
   }
 
   async groupProducts({ groupId }: GetGroupProducts) {
