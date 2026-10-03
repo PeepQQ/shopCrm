@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import type { PanelCreateDto } from './dto';
+import { PanelCreateDto } from './dto';
 import { PanelService } from './panel.service';
-import { GroupService } from '../group/group.service';
 
 @Controller('admin/panel')
 export class PanelController {

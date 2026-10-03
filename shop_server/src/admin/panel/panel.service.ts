@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import type { PanelCreateDto, PanelProducts } from './dto';
+import { PanelCreateDto, PanelProducts } from './dto';
 
 @Injectable()
 export class PanelService {
