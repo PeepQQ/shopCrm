@@ -17,7 +17,7 @@ interface CreatePanelData {
 
 export const createPanel = async (
   data: CreatePanelData,
-): Promise<AxiosResponse<boolean>> => {
+): Promise<AxiosResponse<Panel>> => {
   return await api.post("/admin/panel/create", data);
 };
 

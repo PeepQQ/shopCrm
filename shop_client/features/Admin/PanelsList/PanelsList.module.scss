@@ -1,0 +1,56 @@
+.panelsListMenuWrapper {
+  position: relative;
+  margin-top: auto;
+
+  &.open {
+    .panelsListMenu {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.panelsListTrigger {
+  padding: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  border: 1px var(--border) solid;
+  display: inline-flex;
+  border-radius: 12px;
+
+  &:hover {
+    box-shadow: none;
+    background: var(--surface-active);
+  }
+}
+
+.panelsListMenu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  bottom: calc(100% + 16px);
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadowSm);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panelsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.panelListItem {
+  padding-bottom: 4px;
+  border-bottom: 1px var(--border-strong) solid;
+
+  &:hover {
+    font-weight: 500;
+    border-color: var(--border-strong-active);
+  }
+}

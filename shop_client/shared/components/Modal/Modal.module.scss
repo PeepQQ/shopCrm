@@ -8,12 +8,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .modal {
   max-width: 400px;
   width: 100%;
-  background: var(--background-gradient);
+  background: var(--surface-elevated);
+  border: 1px var(--border) solid;
   padding: 32px 40px;
   border-radius: 32px;
   display: flex;

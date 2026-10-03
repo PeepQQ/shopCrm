@@ -1,3 +1,13 @@
 .createNewParent {
   margin-top: 12px;
 }
+
+.dragButton {
+  font-weight: 900;
+  padding: 0px 2px;
+  cursor: move;
+}
+
+.treeWrapper {
+  overflow: visible !important;
+}

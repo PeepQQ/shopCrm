@@ -12,7 +12,5 @@ export default async function PanelTableLayout({ children, params }: Props) {
   const { panelId } = await params;
   const groups = await getPanelGroupsServer(panelId);
 
-  console.log(groups);
-
   return <PanelLayout groups={groups}>{children}</PanelLayout>;
 }

@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: auto 4fr;
   grid-template-rows: auto 1fr;
-  min-height: calc(100vh - 16px);
+  min-height: 100vh;
   padding: 8px;
   gap: 12px;
 }

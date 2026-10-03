@@ -2,13 +2,15 @@
   margin-top: auto;
   align-self: flex-end;
   padding: 6px;
-  background: var(--background-gradient);
+  background: var(--surface);
   border-radius: 16px;
   max-width: 400px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: var(--shadow);
+  border: 1px var(--border) solid;
 }
 
 .saleCartTable {

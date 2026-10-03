@@ -6,6 +6,7 @@ export interface Group {
   children: Group[] | [];
   groupProducts: Product[] | [];
   type: GroupType;
+  index: number;
 }
 
 export enum GroupType {

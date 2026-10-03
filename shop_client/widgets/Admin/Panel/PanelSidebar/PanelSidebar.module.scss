@@ -1,5 +1,7 @@
 .panelSidebar {
   padding: 16px;
-  background: var(--background-gradient);
+  background: var(--surface);
   border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px var(--border) solid;
 }

@@ -43,6 +43,7 @@ export const ProductFormModal = ({
     formState: { errors },
   } = useForm({
     resolver: yupResolver(productFormSchema),
+    values: editData,
   });
 
   const handleData = async (data: ProductFormData) => {
@@ -67,10 +68,7 @@ export const ProductFormModal = ({
             {productFormFields.map((field) => (
               <label key={field.name}>
                 <span>{field.label}</span>
-                <Input
-                  defaultValue={editData?.[field.name]}
-                  {...register(field.name)}
-                />
+                <Input {...register(field.name)} />
               </label>
             ))}
           </div>

@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import type { PanelCreateData, PanelProducts } from './dto';
+import type { PanelCreateDto, PanelProducts } from './dto';
 
 @Injectable()
 export class PanelService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(data: PanelCreateData) {
+  async create(data: PanelCreateDto) {
     const newPanel = await this.prisma.panel.create({
       data,
     });

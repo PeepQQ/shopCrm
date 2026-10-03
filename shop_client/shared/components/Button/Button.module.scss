@@ -18,14 +18,17 @@
     font-size: 12px;
     padding: 6px 12px;
     border-radius: 8px;
+    box-shadow: var(--shadowSm);
   }
 }
 
 .primary {
-  background: var(--background-gradient);
-  box-shadow: var(--gradient-shadow);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  border: 1px var(--border) solid;
 
   &:hover {
     box-shadow: none;
+    background: var(--surface-hover);
   }
 }

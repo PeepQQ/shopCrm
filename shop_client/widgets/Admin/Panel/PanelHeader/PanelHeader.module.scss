@@ -1,18 +1,18 @@
 .panelHeader {
-  background: var(--background-gradient);
+  background: var(--surface);
   border-radius: 16px;
-  box-shadow: var(--gradient-shadow);
-  padding: 16px;
+  box-shadow: var(--shadow);
+  padding: 0 16px;
   height: 40px;
   display: flex;
   align-items: center;
   grid-column: 2;
   grid-row: 1;
+  border: 1px var(--border) solid;
 }
 
 .menu {
   display: flex;
-  gap: 16px;
   align-items: center;
 }
 
@@ -20,6 +20,7 @@
   font-size: 14px;
   cursor: pointer;
   transition: 0.2s;
+  padding: 16px 8px;
 
   &:hover {
     font-weight: 600;

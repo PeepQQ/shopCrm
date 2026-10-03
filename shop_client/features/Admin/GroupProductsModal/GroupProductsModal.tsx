@@ -83,6 +83,7 @@ export const GroupProductsModal = ({
         </ModalHeader>
         <ModalContent classname={styles.modalContent}>
           <div className={styles.groupProducts}>
+            <h4>Товары группы</h4>
             {groupProducts.map((groupProduct) => (
               <div
                 key={groupProduct.id}
@@ -95,6 +96,7 @@ export const GroupProductsModal = ({
             ))}
           </div>
           <div className={styles.otherProducts}>
+            <h4>Остальные товары</h4>
             {otherProducts.map((otherProduct) => (
               <div
                 key={otherProduct.id}

@@ -4,6 +4,8 @@ export {
   connectProduct,
   disconnectProduct,
   createGroup,
+  deleteGroup,
+  changeParent,
 } from "./Group.api";
 export { getPanelsList, createPanel, getPanelProducts } from "./Panel.api";
 export { createSale } from "./Sale.api";

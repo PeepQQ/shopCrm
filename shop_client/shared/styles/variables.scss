@@ -1,5 +1,32 @@
 :root {
-  --background-gradient: linear-gradient(120deg, #d8d7ed, #d9def3, #a1b7ee);
-  --gradient-shadow:
-    0 3px 5px rgba(67, 79, 130, 0.18), 0 6px 10px rgba(67, 79, 130, 0.12);
+  /* Фон страницы — почти чёрный, с холодным синим */
+  --background: #0e1020;
+  --background-gradient: linear-gradient(120deg, #0e1020, #12152a, #161a33);
+
+  /* Поверхности — слоями, каждая на 1 ступень светлее */
+  --surface: #181c33; /* панели, топбар */
+  --surface-hover: #1f2440; /* hover на пунктах */
+  --surface-active: #262c4d; /* активный пункт, выбранная строка */
+  --surface-elevated: #1c2140; /* модалки, поповеры */
+
+  /* Границы — почти невидимые, только для разделения слоёв */
+  --border: rgba(232, 234, 242, 0.08);
+  --border-active: rgba(232, 234, 242, 0.16);
+  --border-strong: rgba(232, 234, 242, 0.24);
+  --border-strong-active: rgba(232, 234, 242, 0.34);
+
+  /* Текст — не белый, чтобы не «звенел» на чёрном */
+  --text-primary: #d8dbe8;
+  --text-secondary: #a0a5bd;
+  --text-muted: #6a6f88;
+
+  /* Акцент — приглушённый синий */
+  --accent: #7a8ce0;
+  --accent-hover: #8f9fe8;
+  --accent-active: #6a7cd0;
+  --accent-soft: rgba(122, 140, 224, 0.12);
+
+  /* Тени — глубокие, почти чёрные */
+  --shadow: 0 3px 6px rgba(0, 0, 0, 0.55), 0 8px 20px rgba(0, 0, 0, 0.45);
+  --shadowSm: 0 1px 3px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.35);
 }

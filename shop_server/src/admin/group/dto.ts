@@ -5,7 +5,7 @@ import { GroupType } from 'src/generated/prisma/enums';
 export class CreateGroupDto {
   @IsOptional()
   @IsNumber()
-  parentId?: number;
+  parentId?: number | null = null;
 
   @IsString()
   name!: string;
@@ -36,4 +36,22 @@ export class GetGroupProducts {
   @Type(() => Number)
   @IsNumber()
   groupId!: number;
+}
+
+export class DeleteGroupDto {
+  @Type(() => Number)
+  @IsNumber()
+  groupId!: number;
+}
+
+export class ChangeParentDto {
+  @IsNumber()
+  groupId!: number;
+
+  @IsOptional()
+  @IsNumber()
+  parentId!: number | null;
+
+  @IsNumber()
+  index!: number;
 }

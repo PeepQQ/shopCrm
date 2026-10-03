@@ -34,23 +34,6 @@ export const getPanelProductsServer = async (
   return await response.json();
 };
 
-export const getPanelGroupProductsServer = async (
-  groupId: string,
-): Promise<Product[]> => {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("access_token");
-  const response = await fetch(
-    `${ApiUrl}/admin/panel/group/${groupId}/products`,
-    {
-      cache: "no-store",
-      headers: {
-        Cookie: `${token?.name}=${token?.value}`,
-      },
-    },
-  );
-  return await response.json();
-};
-
 export const getPanelSalesListServer = async (
   panelId: number | string,
 ): Promise<Sale[]> => {

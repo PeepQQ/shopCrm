@@ -1,5 +1,5 @@
 body {
-  background: #f1f3f8;
+  background: var(--background-gradient);
 }
 
 * {
@@ -11,6 +11,7 @@ body {
   list-style-type: none;
   box-sizing: border-box;
   background: none;
+  transition: 0.4s;
 }
 
 .wrapper {
@@ -25,9 +26,16 @@ strong,
 span,
 label,
 li,
-a {
+a,
+th,
+td,
+input {
   font-family: var(--font-text);
-  color: black;
+  color: var(--text-primary);
+}
+
+button {
+  cursor: pointer;
 }
 
 h1,
@@ -37,4 +45,5 @@ h4,
 h5,
 h6 {
   font-family: var(--font-head);
+  color: var(--text-primary);
 }

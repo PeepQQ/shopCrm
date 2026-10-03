@@ -1,7 +1,8 @@
-import { IsNumber } from "class-validator";
+import { IsNumber, IsString } from 'class-validator';
 
-export interface PanelCreateData {
-  name: string;
+export class PanelCreateDto {
+  @IsString()
+  name!: string;
 }
 
 export class PanelProducts {

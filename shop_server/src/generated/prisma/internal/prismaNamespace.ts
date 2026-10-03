@@ -1091,7 +1091,8 @@ export const GroupScalarFieldEnum = {
   parentId: 'parentId',
   panelId: 'panelId',
   name: 'name',
-  type: 'type'
+  type: 'type',
+  index: 'index'
 } as const
 
 export type GroupScalarFieldEnum = (typeof GroupScalarFieldEnum)[keyof typeof GroupScalarFieldEnum]

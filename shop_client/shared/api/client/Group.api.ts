@@ -39,6 +39,23 @@ interface CreateGroupData {
 export const createGroup = async (
   data: CreateGroupData,
 ): Promise<AxiosResponse<Group>> => {
-  console.log(data);
   return await api.post(`/admin/group/create`, data);
+};
+
+export const deleteGroup = async (
+  groupId: string | number,
+): Promise<AxiosResponse<Group>> => {
+  return await api.delete(`/admin/group/${groupId}`);
+};
+
+interface ChangeParentData {
+  groupId: number;
+  parentId: number | null;
+  index: number;
+}
+
+export const changeParent = async (
+  data: ChangeParentData,
+): Promise<AxiosResponse<Group[]>> => {
+  return await api.post("/admin/group/changeParent", data);
 };

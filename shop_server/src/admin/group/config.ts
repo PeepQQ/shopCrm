@@ -1,10 +1,10 @@
 import type { Group } from 'src/generated/prisma/client';
 
 export function mapGroupTree(groups: Group[]) {
-  const groupMap = new Map<number, any>();
+  const groupMap: any[] = [];
 
   for (const group of groups) {
-    groupMap.set(group.id, {
+    groupMap.push({
       ...group,
       children: [],
     });
@@ -13,17 +13,17 @@ export function mapGroupTree(groups: Group[]) {
   const roots: any[] = [];
 
   for (const group of groups) {
-    const current = groupMap.get(group.id);
+    const current = groupMap.find((i) => i.id === group.id);
 
     if (group.parentId === null) {
-      roots.push(current);
+      roots.splice(current.index, 0, current);
       continue;
     }
 
-    const parent = groupMap.get(group.parentId);
+    const parent = groupMap.find((i) => i.id === group.parentId);
 
     if (parent) {
-      parent.children.push(current);
+      parent.children.splice(current.index, 0, current);
     }
   }
 

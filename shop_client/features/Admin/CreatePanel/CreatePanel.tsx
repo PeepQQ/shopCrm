@@ -12,19 +12,17 @@ import {
 import { useState } from "react";
 import { createPanel } from "@/shared/api/client/Panel.api";
 import { useRouter } from "next/navigation";
+import { links } from "@/shared/config/links";
 
 export const CreatePanel = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [panelName, setPanelName] = useState("");
 
-  const close = () => {
-    setIsOpen(false);
-  };
-
   const handleCreate = async () => {
     try {
       const res = await createPanel({ name: panelName });
+      router.push(links.admin.panel(res.data.id).table.root);
       router.refresh();
       setIsOpen(false);
     } catch (err) {
