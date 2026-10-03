@@ -1,6 +1,3 @@
--- CreateSchema
-CREATE SCHEMA IF NOT EXISTS "public";
-
 -- CreateEnum
 CREATE TYPE "UserRole" AS ENUM ('USER', 'ADMIN', 'SUPER_ADMIN');
 
@@ -45,6 +42,7 @@ CREATE TABLE "Group" (
     "panelId" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
     "type" "GroupType" NOT NULL,
+    "index" INTEGER DEFAULT 0,
 
     CONSTRAINT "Group_pkey" PRIMARY KEY ("id")
 );
@@ -131,4 +129,3 @@ ALTER TABLE "SaleItem" ADD CONSTRAINT "SaleItem_saleId_fkey" FOREIGN KEY ("saleI
 
 -- AddForeignKey
 ALTER TABLE "SaleItem" ADD CONSTRAINT "SaleItem_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Product"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
