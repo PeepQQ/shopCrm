@@ -47,3 +47,11 @@ h6 {
   font-family: var(--font-head);
   color: var(--text-primary);
 }
+
+.tableContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  align-items: end;
+}

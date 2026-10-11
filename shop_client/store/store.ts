@@ -3,6 +3,7 @@ import userReducer from "./user/user.slice";
 import panelReducer from "./panel/panel.slice";
 import saleReducer from "./sale/sale.slice";
 import groupReducer from "./group/group.slice";
+import supplyReducer from "./supply/supply.slice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     panel: panelReducer,
     sale: saleReducer,
     group: groupReducer,
+    supply: supplyReducer,
   },
 });
 

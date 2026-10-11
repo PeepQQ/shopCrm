@@ -195,6 +195,7 @@ export type PanelWhereInput = {
   groups?: Prisma.GroupListRelationFilter
   products?: Prisma.ProductListRelationFilter
   sales?: Prisma.SaleListRelationFilter
+  panelSupply?: Prisma.PanelSupplyListRelationFilter
 }
 
 export type PanelOrderByWithRelationInput = {
@@ -203,6 +204,7 @@ export type PanelOrderByWithRelationInput = {
   groups?: Prisma.GroupOrderByRelationAggregateInput
   products?: Prisma.ProductOrderByRelationAggregateInput
   sales?: Prisma.SaleOrderByRelationAggregateInput
+  panelSupply?: Prisma.PanelSupplyOrderByRelationAggregateInput
 }
 
 export type PanelWhereUniqueInput = Prisma.AtLeast<{
@@ -214,6 +216,7 @@ export type PanelWhereUniqueInput = Prisma.AtLeast<{
   groups?: Prisma.GroupListRelationFilter
   products?: Prisma.ProductListRelationFilter
   sales?: Prisma.SaleListRelationFilter
+  panelSupply?: Prisma.PanelSupplyListRelationFilter
 }, "id" | "name">
 
 export type PanelOrderByWithAggregationInput = {
@@ -239,6 +242,7 @@ export type PanelCreateInput = {
   groups?: Prisma.GroupCreateNestedManyWithoutPanelInput
   products?: Prisma.ProductCreateNestedManyWithoutPanelInput
   sales?: Prisma.SaleCreateNestedManyWithoutPanelInput
+  panelSupply?: Prisma.PanelSupplyCreateNestedManyWithoutPanelInput
 }
 
 export type PanelUncheckedCreateInput = {
@@ -247,6 +251,7 @@ export type PanelUncheckedCreateInput = {
   groups?: Prisma.GroupUncheckedCreateNestedManyWithoutPanelInput
   products?: Prisma.ProductUncheckedCreateNestedManyWithoutPanelInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutPanelInput
+  panelSupply?: Prisma.PanelSupplyUncheckedCreateNestedManyWithoutPanelInput
 }
 
 export type PanelUpdateInput = {
@@ -254,6 +259,7 @@ export type PanelUpdateInput = {
   groups?: Prisma.GroupUpdateManyWithoutPanelNestedInput
   products?: Prisma.ProductUpdateManyWithoutPanelNestedInput
   sales?: Prisma.SaleUpdateManyWithoutPanelNestedInput
+  panelSupply?: Prisma.PanelSupplyUpdateManyWithoutPanelNestedInput
 }
 
 export type PanelUncheckedUpdateInput = {
@@ -262,6 +268,7 @@ export type PanelUncheckedUpdateInput = {
   groups?: Prisma.GroupUncheckedUpdateManyWithoutPanelNestedInput
   products?: Prisma.ProductUncheckedUpdateManyWithoutPanelNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutPanelNestedInput
+  panelSupply?: Prisma.PanelSupplyUncheckedUpdateManyWithoutPanelNestedInput
 }
 
 export type PanelCreateManyInput = {
@@ -348,10 +355,25 @@ export type PanelUpdateOneRequiredWithoutSalesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PanelUpdateToOneWithWhereWithoutSalesInput, Prisma.PanelUpdateWithoutSalesInput>, Prisma.PanelUncheckedUpdateWithoutSalesInput>
 }
 
+export type PanelCreateNestedOneWithoutPanelSupplyInput = {
+  create?: Prisma.XOR<Prisma.PanelCreateWithoutPanelSupplyInput, Prisma.PanelUncheckedCreateWithoutPanelSupplyInput>
+  connectOrCreate?: Prisma.PanelCreateOrConnectWithoutPanelSupplyInput
+  connect?: Prisma.PanelWhereUniqueInput
+}
+
+export type PanelUpdateOneRequiredWithoutPanelSupplyNestedInput = {
+  create?: Prisma.XOR<Prisma.PanelCreateWithoutPanelSupplyInput, Prisma.PanelUncheckedCreateWithoutPanelSupplyInput>
+  connectOrCreate?: Prisma.PanelCreateOrConnectWithoutPanelSupplyInput
+  upsert?: Prisma.PanelUpsertWithoutPanelSupplyInput
+  connect?: Prisma.PanelWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PanelUpdateToOneWithWhereWithoutPanelSupplyInput, Prisma.PanelUpdateWithoutPanelSupplyInput>, Prisma.PanelUncheckedUpdateWithoutPanelSupplyInput>
+}
+
 export type PanelCreateWithoutGroupsInput = {
   name: string
   products?: Prisma.ProductCreateNestedManyWithoutPanelInput
   sales?: Prisma.SaleCreateNestedManyWithoutPanelInput
+  panelSupply?: Prisma.PanelSupplyCreateNestedManyWithoutPanelInput
 }
 
 export type PanelUncheckedCreateWithoutGroupsInput = {
@@ -359,6 +381,7 @@ export type PanelUncheckedCreateWithoutGroupsInput = {
   name: string
   products?: Prisma.ProductUncheckedCreateNestedManyWithoutPanelInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutPanelInput
+  panelSupply?: Prisma.PanelSupplyUncheckedCreateNestedManyWithoutPanelInput
 }
 
 export type PanelCreateOrConnectWithoutGroupsInput = {
@@ -381,6 +404,7 @@ export type PanelUpdateWithoutGroupsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   products?: Prisma.ProductUpdateManyWithoutPanelNestedInput
   sales?: Prisma.SaleUpdateManyWithoutPanelNestedInput
+  panelSupply?: Prisma.PanelSupplyUpdateManyWithoutPanelNestedInput
 }
 
 export type PanelUncheckedUpdateWithoutGroupsInput = {
@@ -388,12 +412,14 @@ export type PanelUncheckedUpdateWithoutGroupsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   products?: Prisma.ProductUncheckedUpdateManyWithoutPanelNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutPanelNestedInput
+  panelSupply?: Prisma.PanelSupplyUncheckedUpdateManyWithoutPanelNestedInput
 }
 
 export type PanelCreateWithoutProductsInput = {
   name: string
   groups?: Prisma.GroupCreateNestedManyWithoutPanelInput
   sales?: Prisma.SaleCreateNestedManyWithoutPanelInput
+  panelSupply?: Prisma.PanelSupplyCreateNestedManyWithoutPanelInput
 }
 
 export type PanelUncheckedCreateWithoutProductsInput = {
@@ -401,6 +427,7 @@ export type PanelUncheckedCreateWithoutProductsInput = {
   name: string
   groups?: Prisma.GroupUncheckedCreateNestedManyWithoutPanelInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutPanelInput
+  panelSupply?: Prisma.PanelSupplyUncheckedCreateNestedManyWithoutPanelInput
 }
 
 export type PanelCreateOrConnectWithoutProductsInput = {
@@ -423,6 +450,7 @@ export type PanelUpdateWithoutProductsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   groups?: Prisma.GroupUpdateManyWithoutPanelNestedInput
   sales?: Prisma.SaleUpdateManyWithoutPanelNestedInput
+  panelSupply?: Prisma.PanelSupplyUpdateManyWithoutPanelNestedInput
 }
 
 export type PanelUncheckedUpdateWithoutProductsInput = {
@@ -430,12 +458,14 @@ export type PanelUncheckedUpdateWithoutProductsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   groups?: Prisma.GroupUncheckedUpdateManyWithoutPanelNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutPanelNestedInput
+  panelSupply?: Prisma.PanelSupplyUncheckedUpdateManyWithoutPanelNestedInput
 }
 
 export type PanelCreateWithoutSalesInput = {
   name: string
   groups?: Prisma.GroupCreateNestedManyWithoutPanelInput
   products?: Prisma.ProductCreateNestedManyWithoutPanelInput
+  panelSupply?: Prisma.PanelSupplyCreateNestedManyWithoutPanelInput
 }
 
 export type PanelUncheckedCreateWithoutSalesInput = {
@@ -443,6 +473,7 @@ export type PanelUncheckedCreateWithoutSalesInput = {
   name: string
   groups?: Prisma.GroupUncheckedCreateNestedManyWithoutPanelInput
   products?: Prisma.ProductUncheckedCreateNestedManyWithoutPanelInput
+  panelSupply?: Prisma.PanelSupplyUncheckedCreateNestedManyWithoutPanelInput
 }
 
 export type PanelCreateOrConnectWithoutSalesInput = {
@@ -465,6 +496,7 @@ export type PanelUpdateWithoutSalesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   groups?: Prisma.GroupUpdateManyWithoutPanelNestedInput
   products?: Prisma.ProductUpdateManyWithoutPanelNestedInput
+  panelSupply?: Prisma.PanelSupplyUpdateManyWithoutPanelNestedInput
 }
 
 export type PanelUncheckedUpdateWithoutSalesInput = {
@@ -472,6 +504,53 @@ export type PanelUncheckedUpdateWithoutSalesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   groups?: Prisma.GroupUncheckedUpdateManyWithoutPanelNestedInput
   products?: Prisma.ProductUncheckedUpdateManyWithoutPanelNestedInput
+  panelSupply?: Prisma.PanelSupplyUncheckedUpdateManyWithoutPanelNestedInput
+}
+
+export type PanelCreateWithoutPanelSupplyInput = {
+  name: string
+  groups?: Prisma.GroupCreateNestedManyWithoutPanelInput
+  products?: Prisma.ProductCreateNestedManyWithoutPanelInput
+  sales?: Prisma.SaleCreateNestedManyWithoutPanelInput
+}
+
+export type PanelUncheckedCreateWithoutPanelSupplyInput = {
+  id?: number
+  name: string
+  groups?: Prisma.GroupUncheckedCreateNestedManyWithoutPanelInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutPanelInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutPanelInput
+}
+
+export type PanelCreateOrConnectWithoutPanelSupplyInput = {
+  where: Prisma.PanelWhereUniqueInput
+  create: Prisma.XOR<Prisma.PanelCreateWithoutPanelSupplyInput, Prisma.PanelUncheckedCreateWithoutPanelSupplyInput>
+}
+
+export type PanelUpsertWithoutPanelSupplyInput = {
+  update: Prisma.XOR<Prisma.PanelUpdateWithoutPanelSupplyInput, Prisma.PanelUncheckedUpdateWithoutPanelSupplyInput>
+  create: Prisma.XOR<Prisma.PanelCreateWithoutPanelSupplyInput, Prisma.PanelUncheckedCreateWithoutPanelSupplyInput>
+  where?: Prisma.PanelWhereInput
+}
+
+export type PanelUpdateToOneWithWhereWithoutPanelSupplyInput = {
+  where?: Prisma.PanelWhereInput
+  data: Prisma.XOR<Prisma.PanelUpdateWithoutPanelSupplyInput, Prisma.PanelUncheckedUpdateWithoutPanelSupplyInput>
+}
+
+export type PanelUpdateWithoutPanelSupplyInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  groups?: Prisma.GroupUpdateManyWithoutPanelNestedInput
+  products?: Prisma.ProductUpdateManyWithoutPanelNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutPanelNestedInput
+}
+
+export type PanelUncheckedUpdateWithoutPanelSupplyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  groups?: Prisma.GroupUncheckedUpdateManyWithoutPanelNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutPanelNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutPanelNestedInput
 }
 
 
@@ -483,12 +562,14 @@ export type PanelCountOutputType = {
   groups: number
   products: number
   sales: number
+  panelSupply: number
 }
 
 export type PanelCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   groups?: boolean | PanelCountOutputTypeCountGroupsArgs
   products?: boolean | PanelCountOutputTypeCountProductsArgs
   sales?: boolean | PanelCountOutputTypeCountSalesArgs
+  panelSupply?: boolean | PanelCountOutputTypeCountPanelSupplyArgs
 }
 
 /**
@@ -522,6 +603,13 @@ export type PanelCountOutputTypeCountSalesArgs<ExtArgs extends runtime.Types.Ext
   where?: Prisma.SaleWhereInput
 }
 
+/**
+ * PanelCountOutputType without action
+ */
+export type PanelCountOutputTypeCountPanelSupplyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PanelSupplyWhereInput
+}
+
 
 export type PanelSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -529,6 +617,7 @@ export type PanelSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   groups?: boolean | Prisma.Panel$groupsArgs<ExtArgs>
   products?: boolean | Prisma.Panel$productsArgs<ExtArgs>
   sales?: boolean | Prisma.Panel$salesArgs<ExtArgs>
+  panelSupply?: boolean | Prisma.Panel$panelSupplyArgs<ExtArgs>
   _count?: boolean | Prisma.PanelCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["panel"]>
 
@@ -552,6 +641,7 @@ export type PanelInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   groups?: boolean | Prisma.Panel$groupsArgs<ExtArgs>
   products?: boolean | Prisma.Panel$productsArgs<ExtArgs>
   sales?: boolean | Prisma.Panel$salesArgs<ExtArgs>
+  panelSupply?: boolean | Prisma.Panel$panelSupplyArgs<ExtArgs>
   _count?: boolean | Prisma.PanelCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PanelIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -563,6 +653,7 @@ export type $PanelPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     groups: Prisma.$GroupPayload<ExtArgs>[]
     products: Prisma.$ProductPayload<ExtArgs>[]
     sales: Prisma.$SalePayload<ExtArgs>[]
+    panelSupply: Prisma.$PanelSupplyPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -964,6 +1055,7 @@ export interface Prisma__PanelClient<T, Null = never, ExtArgs extends runtime.Ty
   groups<T extends Prisma.Panel$groupsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Panel$groupsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   products<T extends Prisma.Panel$productsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Panel$productsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sales<T extends Prisma.Panel$salesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Panel$salesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  panelSupply<T extends Prisma.Panel$panelSupplyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Panel$panelSupplyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PanelSupplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1457,6 +1549,30 @@ export type Panel$salesArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.SaleScalarFieldEnum | Prisma.SaleScalarFieldEnum[]
+}
+
+/**
+ * Panel.panelSupply
+ */
+export type Panel$panelSupplyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PanelSupply
+   */
+  select?: Prisma.PanelSupplySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PanelSupply
+   */
+  omit?: Prisma.PanelSupplyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PanelSupplyInclude<ExtArgs> | null
+  where?: Prisma.PanelSupplyWhereInput
+  orderBy?: Prisma.PanelSupplyOrderByWithRelationInput | Prisma.PanelSupplyOrderByWithRelationInput[]
+  cursor?: Prisma.PanelSupplyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PanelSupplyScalarFieldEnum | Prisma.PanelSupplyScalarFieldEnum[]
 }
 
 /**

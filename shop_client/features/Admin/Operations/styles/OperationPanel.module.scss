@@ -1,0 +1,36 @@
+.operationPanel {
+  margin-top: auto;
+  align-self: flex-end;
+  padding: 6px;
+  background: var(--surface);
+  border-radius: 16px;
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; 
+  box-shadow: var(--shadow);
+  border: 1px var(--border) solid;
+  gap: 16px;
+}
+
+.operationPanelTable {
+  width: 100%;
+
+  thead {
+    tr th {
+      padding: 4px 8px;
+      font-size: 12px;
+      font-family: var(--font-head);
+      font-weight: 400;
+      text-align: left;
+    }
+  }
+
+  tbody {
+    tr td {
+      padding: 4px 8px;
+      font-size: 12px;
+      font-family: var(--font-text);
+    }
+  }
+}

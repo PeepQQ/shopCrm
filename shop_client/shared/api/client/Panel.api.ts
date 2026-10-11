@@ -1,5 +1,6 @@
 import type { Panel } from "@/entities/panel";
 import { Product } from "@/entities/product";
+import { SupplyItem } from "@/entities/supply";
 import axios, { type AxiosResponse } from "axios";
 
 const api = axios.create({
@@ -25,4 +26,18 @@ export const getPanelProducts = async (
   panelId: string,
 ): Promise<AxiosResponse<Product[]>> => {
   return await api.get(`/admin/panel/${panelId}/panelProducts`);
+};
+
+interface CreatePanelSupplyData {
+  panelId: string;
+  items: SupplyItem[];
+}
+
+export const createPanelSupply = async (
+  data: CreatePanelSupplyData,
+): Promise<AxiosResponse<boolean>> => {
+  return await api.post(
+    `/admin/panel/${data.panelId}/createSupply`,
+    data.items,
+  );
 };

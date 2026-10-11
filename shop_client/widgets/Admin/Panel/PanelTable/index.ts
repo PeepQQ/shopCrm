@@ -1,1 +1,0 @@
-export { PanelTable } from "./PanelTable";

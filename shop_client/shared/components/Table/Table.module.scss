@@ -1,14 +1,13 @@
 .table {
   border-collapse: collapse;
   width: 100%;
+  table-layout: fixed;
 }
 
-.thead {
-  .th {
-    padding: 4px 8px;
-    font-family: var(--font-head);
-    text-align: left;
-  }
+.th {
+  padding: 4px 8px;
+  font-family: var(--font-head);
+  text-align: left;
 }
 
 .tr {
@@ -31,9 +30,8 @@
   }
 }
 
-.tbody {
-  .td {
-    padding: 4px 8px;
-    font-family: var(--font-text);
-  }
+.td {
+  padding: 4px 8px;
+  text-align: left;
+  font-family: var(--font-text);
 }

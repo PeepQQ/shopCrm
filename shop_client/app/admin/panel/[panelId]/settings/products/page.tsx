@@ -1,9 +1,9 @@
-import { PanelSettingsProducts } from "@/widgets/Admin/Panel/PanelSettings/Products/PanelSettingsProducts";
+import { SettingProducts } from "@/widgets/Admin/Panel/PanelSettings/Products/SettingProducts";
 import { getPanelProductsServer } from "@/shared/api/server/Panel.server.api";
 import type { PageProps } from "@/app/next.type";
 
-export default async function PanelSettingsProductsPage({ params }: PageProps) {
+export default async function SettingProductsPage({ params }: PageProps) {
   const { panelId } = await params;
   const products = await getPanelProductsServer(panelId);
-  return <PanelSettingsProducts products={products} />;
+  return <SettingProducts products={products} />;
 }

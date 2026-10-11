@@ -4,12 +4,17 @@ export const links = {
     root: "/admin",
     panel: (panelId: string | number) => ({
       root: `/admin/panel/${panelId}`,
-      salesList: `/admin/panel/${panelId}/salesList`,
 
-      table: {
-        root: `/admin/panel/${panelId}/table`,
-        group: (groupId: string | number) =>
-          `/admin/panel/${panelId}/table/group/${groupId}`,
+      history: {
+        sale: `/admin/panel/${panelId}/history/sale`,
+      },
+
+      groups: {
+        root: `/admin/panel/${panelId}/groups`,
+        group: (groupId: string | number) => ({
+          sale: `/admin/panel/${panelId}/groups/${groupId}/sale`,
+          supply: `/admin/panel/${panelId}/groups/${groupId}/supply`,
+        }),
       },
 
       settings: {

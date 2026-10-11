@@ -1,0 +1,21 @@
+.fieldItem {
+  input {
+    &::-webkit-inner-spin-button {
+      padding: 15px 2px;
+    }
+  }
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.submit {
+  margin-top: 16px;
+}
+
+.openElement {
+  cursor: pointer;
+}

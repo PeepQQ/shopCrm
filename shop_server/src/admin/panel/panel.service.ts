@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { PanelCreateDto, PanelProducts } from './dto';
+import { CreatePanelSupplyDto, PanelCreateDto, PanelProducts } from './dto';
 
 @Injectable()
 export class PanelService {
@@ -21,6 +21,20 @@ export class PanelService {
   async panelProducts({ panelId }: PanelProducts) {
     return await this.prisma.product.findMany({
       where: { panelId },
+    });
+  }
+
+  async createSupply(items: CreatePanelSupplyDto[], panelId: number) {
+    const supply = await this.prisma.panelSupply.create({
+      data: {
+        panelId: panelId,
+      },
+    });
+
+    if (!supply) throw new BadRequestException();
+
+    return await this.prisma.panelSupplyItem.createMany({
+      data: items.map((item) => ({ supplyId: supply.id, ...item })),
     });
   }
 }

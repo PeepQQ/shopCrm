@@ -1,0 +1,21 @@
+.inputDate::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.inputDate {
+  position: relative;
+}
+
+.inputDateWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: fit-content;
+}
+
+.inputDateIcon {
+  display: inline-flex;
+  position: absolute;
+  right: 0;
+  pointer-events: none;
+}

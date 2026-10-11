@@ -404,7 +404,9 @@ export const ModelName = {
   Product: 'Product',
   GroupProducts: 'GroupProducts',
   Sale: 'Sale',
-  SaleItem: 'SaleItem'
+  SaleItem: 'SaleItem',
+  PanelSupply: 'PanelSupply',
+  PanelSupplyItem: 'PanelSupplyItem'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -420,7 +422,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "refreshToken" | "panel" | "group" | "product" | "groupProducts" | "sale" | "saleItem"
+    modelProps: "user" | "refreshToken" | "panel" | "group" | "product" | "groupProducts" | "sale" | "saleItem" | "panelSupply" | "panelSupplyItem"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1016,6 +1018,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PanelSupply: {
+      payload: Prisma.$PanelSupplyPayload<ExtArgs>
+      fields: Prisma.PanelSupplyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PanelSupplyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PanelSupplyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload>
+        }
+        findFirst: {
+          args: Prisma.PanelSupplyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PanelSupplyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload>
+        }
+        findMany: {
+          args: Prisma.PanelSupplyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload>[]
+        }
+        create: {
+          args: Prisma.PanelSupplyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload>
+        }
+        createMany: {
+          args: Prisma.PanelSupplyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PanelSupplyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload>[]
+        }
+        delete: {
+          args: Prisma.PanelSupplyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload>
+        }
+        update: {
+          args: Prisma.PanelSupplyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload>
+        }
+        deleteMany: {
+          args: Prisma.PanelSupplyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PanelSupplyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PanelSupplyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload>[]
+        }
+        upsert: {
+          args: Prisma.PanelSupplyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyPayload>
+        }
+        aggregate: {
+          args: Prisma.PanelSupplyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePanelSupply>
+        }
+        groupBy: {
+          args: Prisma.PanelSupplyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PanelSupplyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PanelSupplyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PanelSupplyCountAggregateOutputType> | number
+        }
+      }
+    }
+    PanelSupplyItem: {
+      payload: Prisma.$PanelSupplyItemPayload<ExtArgs>
+      fields: Prisma.PanelSupplyItemFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PanelSupplyItemFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PanelSupplyItemFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload>
+        }
+        findFirst: {
+          args: Prisma.PanelSupplyItemFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PanelSupplyItemFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload>
+        }
+        findMany: {
+          args: Prisma.PanelSupplyItemFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload>[]
+        }
+        create: {
+          args: Prisma.PanelSupplyItemCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload>
+        }
+        createMany: {
+          args: Prisma.PanelSupplyItemCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PanelSupplyItemCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload>[]
+        }
+        delete: {
+          args: Prisma.PanelSupplyItemDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload>
+        }
+        update: {
+          args: Prisma.PanelSupplyItemUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload>
+        }
+        deleteMany: {
+          args: Prisma.PanelSupplyItemDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PanelSupplyItemUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PanelSupplyItemUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload>[]
+        }
+        upsert: {
+          args: Prisma.PanelSupplyItemUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PanelSupplyItemPayload>
+        }
+        aggregate: {
+          args: Prisma.PanelSupplyItemAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePanelSupplyItem>
+        }
+        groupBy: {
+          args: Prisma.PanelSupplyItemGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PanelSupplyItemGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PanelSupplyItemCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PanelSupplyItemCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1140,6 +1290,25 @@ export const SaleItemScalarFieldEnum = {
 } as const
 
 export type SaleItemScalarFieldEnum = (typeof SaleItemScalarFieldEnum)[keyof typeof SaleItemScalarFieldEnum]
+
+
+export const PanelSupplyScalarFieldEnum = {
+  id: 'id',
+  panelId: 'panelId',
+  dateCreated: 'dateCreated'
+} as const
+
+export type PanelSupplyScalarFieldEnum = (typeof PanelSupplyScalarFieldEnum)[keyof typeof PanelSupplyScalarFieldEnum]
+
+
+export const PanelSupplyItemScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  count: 'count',
+  supplyId: 'supplyId'
+} as const
+
+export type PanelSupplyItemScalarFieldEnum = (typeof PanelSupplyItemScalarFieldEnum)[keyof typeof PanelSupplyItemScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1428,6 +1597,8 @@ export type GlobalOmitConfig = {
   groupProducts?: Prisma.GroupProductsOmit
   sale?: Prisma.SaleOmit
   saleItem?: Prisma.SaleItemOmit
+  panelSupply?: Prisma.PanelSupplyOmit
+  panelSupplyItem?: Prisma.PanelSupplyItemOmit
 }
 
 /* Types for Logging */

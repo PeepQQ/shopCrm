@@ -1,0 +1,20 @@
+.dateFilter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: fit-content;
+}
+
+.dateFilterFields {
+  display: flex;
+  gap: 32px;
+}
+
+.dateFilterField {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    font-size: 12px;
+  }
+}

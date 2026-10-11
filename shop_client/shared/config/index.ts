@@ -3,5 +3,6 @@ export {
   getDecreasePercent,
   toFixedLength,
   formatDate,
+  formatDateToLocale,
   getApiError,
-} from "./helpers";
+} from "./utils";

@@ -4,7 +4,6 @@ import styles from "./CreatePanel.module.scss";
 import { Input } from "@/shared/components/Input";
 import {
   Modal,
-  ModalClose,
   ModalActions,
   ModalHeader,
   ModalContent,
@@ -22,7 +21,7 @@ export const CreatePanel = ({ children }: { children: React.ReactNode }) => {
   const handleCreate = async () => {
     try {
       const res = await createPanel({ name: panelName });
-      router.push(links.admin.panel(res.data.id).table.root);
+      router.push(links.admin.panel(res.data.id).groups.root);
       router.refresh();
       setIsOpen(false);
     } catch (err) {

@@ -1,6 +1,12 @@
 import { Decimal } from '@prisma/client/runtime/client';
 import { Type } from 'class-transformer';
-import { IsArray, IsDecimal, IsNumber } from 'class-validator';
+import {
+  IsArray,
+  IsDecimal,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class SaleItemDto {
   @IsNumber()
@@ -24,8 +30,16 @@ export class CreateSaleDto {
   saleItems!: SaleItemDto[];
 }
 
-export class SalesListDto {
-  @Type(() => Number)
-  @IsNumber()
-  panelId!: number;
+export class SalesHistoryQuery {
+  @IsOptional()
+  @IsString()
+  date?: string;
+
+  @IsOptional()
+  @IsString()
+  dateStart?: string;
+
+  @IsOptional()
+  @IsString()
+  dateEnd?: string;
 }

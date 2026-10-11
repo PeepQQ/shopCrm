@@ -1,10 +1,6 @@
 .group {
   margin-left: calc(var(--level) * 5px);
   width: 100%;
-
-  &.open .arrow {
-    transform: rotate(-90deg);
-  }
 }
 
 .groupHeader {
@@ -18,11 +14,19 @@
   padding: 2px 0px;
   flex: 1;
   display: flex;
-  justify-content: space-between;
+  gap: 6px;
   align-items: center;
 
   &:hover {
     background: var(--surface-active);
+  }
+}
+
+.arrow {
+  margin-left: auto;
+
+  &.open {
+    transform: rotate(-90deg);
   }
 }
 

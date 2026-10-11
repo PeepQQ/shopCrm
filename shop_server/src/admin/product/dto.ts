@@ -8,9 +8,6 @@ export class CreateProductDto {
   cost!: number;
 
   @IsNumber()
-  count!: number;
-
-  @IsNumber()
   panelId!: number;
 }
 

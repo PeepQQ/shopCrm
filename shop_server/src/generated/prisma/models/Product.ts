@@ -247,6 +247,7 @@ export type ProductWhereInput = {
   groupProducts?: Prisma.GroupProductsListRelationFilter
   panel?: Prisma.XOR<Prisma.PanelScalarRelationFilter, Prisma.PanelWhereInput>
   saleItems?: Prisma.SaleItemListRelationFilter
+  PanelSupplyItems?: Prisma.PanelSupplyItemListRelationFilter
 }
 
 export type ProductOrderByWithRelationInput = {
@@ -260,6 +261,7 @@ export type ProductOrderByWithRelationInput = {
   groupProducts?: Prisma.GroupProductsOrderByRelationAggregateInput
   panel?: Prisma.PanelOrderByWithRelationInput
   saleItems?: Prisma.SaleItemOrderByRelationAggregateInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemOrderByRelationAggregateInput
 }
 
 export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -276,6 +278,7 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   groupProducts?: Prisma.GroupProductsListRelationFilter
   panel?: Prisma.XOR<Prisma.PanelScalarRelationFilter, Prisma.PanelWhereInput>
   saleItems?: Prisma.SaleItemListRelationFilter
+  PanelSupplyItems?: Prisma.PanelSupplyItemListRelationFilter
 }, "id">
 
 export type ProductOrderByWithAggregationInput = {
@@ -315,6 +318,7 @@ export type ProductCreateInput = {
   groupProducts?: Prisma.GroupProductsCreateNestedManyWithoutProductInput
   panel: Prisma.PanelCreateNestedOneWithoutProductsInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateInput = {
@@ -327,6 +331,7 @@ export type ProductUncheckedCreateInput = {
   updatedAt?: Date | string
   groupProducts?: Prisma.GroupProductsUncheckedCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductUpdateInput = {
@@ -338,6 +343,7 @@ export type ProductUpdateInput = {
   groupProducts?: Prisma.GroupProductsUpdateManyWithoutProductNestedInput
   panel?: Prisma.PanelUpdateOneRequiredWithoutProductsNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateInput = {
@@ -350,6 +356,7 @@ export type ProductUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupProducts?: Prisma.GroupProductsUncheckedUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateManyInput = {
@@ -509,6 +516,20 @@ export type ProductUpdateOneRequiredWithoutSaleItemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProductUpdateToOneWithWhereWithoutSaleItemsInput, Prisma.ProductUpdateWithoutSaleItemsInput>, Prisma.ProductUncheckedUpdateWithoutSaleItemsInput>
 }
 
+export type ProductCreateNestedOneWithoutPanelSupplyItemsInput = {
+  create?: Prisma.XOR<Prisma.ProductCreateWithoutPanelSupplyItemsInput, Prisma.ProductUncheckedCreateWithoutPanelSupplyItemsInput>
+  connectOrCreate?: Prisma.ProductCreateOrConnectWithoutPanelSupplyItemsInput
+  connect?: Prisma.ProductWhereUniqueInput
+}
+
+export type ProductUpdateOneRequiredWithoutPanelSupplyItemsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProductCreateWithoutPanelSupplyItemsInput, Prisma.ProductUncheckedCreateWithoutPanelSupplyItemsInput>
+  connectOrCreate?: Prisma.ProductCreateOrConnectWithoutPanelSupplyItemsInput
+  upsert?: Prisma.ProductUpsertWithoutPanelSupplyItemsInput
+  connect?: Prisma.ProductWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProductUpdateToOneWithWhereWithoutPanelSupplyItemsInput, Prisma.ProductUpdateWithoutPanelSupplyItemsInput>, Prisma.ProductUncheckedUpdateWithoutPanelSupplyItemsInput>
+}
+
 export type ProductCreateWithoutPanelInput = {
   name: string
   cost: number
@@ -517,6 +538,7 @@ export type ProductCreateWithoutPanelInput = {
   updatedAt?: Date | string
   groupProducts?: Prisma.GroupProductsCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutPanelInput = {
@@ -528,6 +550,7 @@ export type ProductUncheckedCreateWithoutPanelInput = {
   updatedAt?: Date | string
   groupProducts?: Prisma.GroupProductsUncheckedCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutPanelInput = {
@@ -577,6 +600,7 @@ export type ProductCreateWithoutGroupProductsInput = {
   updatedAt?: Date | string
   panel: Prisma.PanelCreateNestedOneWithoutProductsInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutGroupProductsInput = {
@@ -588,6 +612,7 @@ export type ProductUncheckedCreateWithoutGroupProductsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutGroupProductsInput = {
@@ -614,6 +639,7 @@ export type ProductUpdateWithoutGroupProductsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   panel?: Prisma.PanelUpdateOneRequiredWithoutProductsNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutGroupProductsInput = {
@@ -625,6 +651,7 @@ export type ProductUncheckedUpdateWithoutGroupProductsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateWithoutSaleItemsInput = {
@@ -635,6 +662,7 @@ export type ProductCreateWithoutSaleItemsInput = {
   updatedAt?: Date | string
   groupProducts?: Prisma.GroupProductsCreateNestedManyWithoutProductInput
   panel: Prisma.PanelCreateNestedOneWithoutProductsInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutSaleItemsInput = {
@@ -646,6 +674,7 @@ export type ProductUncheckedCreateWithoutSaleItemsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   groupProducts?: Prisma.GroupProductsUncheckedCreateNestedManyWithoutProductInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutSaleItemsInput = {
@@ -672,6 +701,7 @@ export type ProductUpdateWithoutSaleItemsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupProducts?: Prisma.GroupProductsUpdateManyWithoutProductNestedInput
   panel?: Prisma.PanelUpdateOneRequiredWithoutProductsNestedInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutSaleItemsInput = {
@@ -683,6 +713,69 @@ export type ProductUncheckedUpdateWithoutSaleItemsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupProducts?: Prisma.GroupProductsUncheckedUpdateManyWithoutProductNestedInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUncheckedUpdateManyWithoutProductNestedInput
+}
+
+export type ProductCreateWithoutPanelSupplyItemsInput = {
+  name: string
+  cost: number
+  count?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  groupProducts?: Prisma.GroupProductsCreateNestedManyWithoutProductInput
+  panel: Prisma.PanelCreateNestedOneWithoutProductsInput
+  saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+}
+
+export type ProductUncheckedCreateWithoutPanelSupplyItemsInput = {
+  id?: number
+  name: string
+  cost: number
+  panelId: number
+  count?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  groupProducts?: Prisma.GroupProductsUncheckedCreateNestedManyWithoutProductInput
+  saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+}
+
+export type ProductCreateOrConnectWithoutPanelSupplyItemsInput = {
+  where: Prisma.ProductWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProductCreateWithoutPanelSupplyItemsInput, Prisma.ProductUncheckedCreateWithoutPanelSupplyItemsInput>
+}
+
+export type ProductUpsertWithoutPanelSupplyItemsInput = {
+  update: Prisma.XOR<Prisma.ProductUpdateWithoutPanelSupplyItemsInput, Prisma.ProductUncheckedUpdateWithoutPanelSupplyItemsInput>
+  create: Prisma.XOR<Prisma.ProductCreateWithoutPanelSupplyItemsInput, Prisma.ProductUncheckedCreateWithoutPanelSupplyItemsInput>
+  where?: Prisma.ProductWhereInput
+}
+
+export type ProductUpdateToOneWithWhereWithoutPanelSupplyItemsInput = {
+  where?: Prisma.ProductWhereInput
+  data: Prisma.XOR<Prisma.ProductUpdateWithoutPanelSupplyItemsInput, Prisma.ProductUncheckedUpdateWithoutPanelSupplyItemsInput>
+}
+
+export type ProductUpdateWithoutPanelSupplyItemsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  count?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  groupProducts?: Prisma.GroupProductsUpdateManyWithoutProductNestedInput
+  panel?: Prisma.PanelUpdateOneRequiredWithoutProductsNestedInput
+  saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+}
+
+export type ProductUncheckedUpdateWithoutPanelSupplyItemsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  panelId?: Prisma.IntFieldUpdateOperationsInput | number
+  count?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  groupProducts?: Prisma.GroupProductsUncheckedUpdateManyWithoutProductNestedInput
+  saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateManyPanelInput = {
@@ -702,6 +795,7 @@ export type ProductUpdateWithoutPanelInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupProducts?: Prisma.GroupProductsUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutPanelInput = {
@@ -713,6 +807,7 @@ export type ProductUncheckedUpdateWithoutPanelInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   groupProducts?: Prisma.GroupProductsUncheckedUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
+  PanelSupplyItems?: Prisma.PanelSupplyItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateManyWithoutPanelInput = {
@@ -732,11 +827,13 @@ export type ProductUncheckedUpdateManyWithoutPanelInput = {
 export type ProductCountOutputType = {
   groupProducts: number
   saleItems: number
+  PanelSupplyItems: number
 }
 
 export type ProductCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   groupProducts?: boolean | ProductCountOutputTypeCountGroupProductsArgs
   saleItems?: boolean | ProductCountOutputTypeCountSaleItemsArgs
+  PanelSupplyItems?: boolean | ProductCountOutputTypeCountPanelSupplyItemsArgs
 }
 
 /**
@@ -763,6 +860,13 @@ export type ProductCountOutputTypeCountSaleItemsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.SaleItemWhereInput
 }
 
+/**
+ * ProductCountOutputType without action
+ */
+export type ProductCountOutputTypeCountPanelSupplyItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PanelSupplyItemWhereInput
+}
+
 
 export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -775,6 +879,7 @@ export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   groupProducts?: boolean | Prisma.Product$groupProductsArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
   saleItems?: boolean | Prisma.Product$saleItemsArgs<ExtArgs>
+  PanelSupplyItems?: boolean | Prisma.Product$PanelSupplyItemsArgs<ExtArgs>
   _count?: boolean | Prisma.ProductCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["product"]>
 
@@ -815,6 +920,7 @@ export type ProductInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   groupProducts?: boolean | Prisma.Product$groupProductsArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
   saleItems?: boolean | Prisma.Product$saleItemsArgs<ExtArgs>
+  PanelSupplyItems?: boolean | Prisma.Product$PanelSupplyItemsArgs<ExtArgs>
   _count?: boolean | Prisma.ProductCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProductIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -830,6 +936,7 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     groupProducts: Prisma.$GroupProductsPayload<ExtArgs>[]
     panel: Prisma.$PanelPayload<ExtArgs>
     saleItems: Prisma.$SaleItemPayload<ExtArgs>[]
+    PanelSupplyItems: Prisma.$PanelSupplyItemPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1236,6 +1343,7 @@ export interface Prisma__ProductClient<T, Null = never, ExtArgs extends runtime.
   groupProducts<T extends Prisma.Product$groupProductsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$groupProductsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GroupProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   panel<T extends Prisma.PanelDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PanelDefaultArgs<ExtArgs>>): Prisma.Prisma__PanelClient<runtime.Types.Result.GetResult<Prisma.$PanelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   saleItems<T extends Prisma.Product$saleItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$saleItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SaleItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  PanelSupplyItems<T extends Prisma.Product$PanelSupplyItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$PanelSupplyItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PanelSupplyItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1718,6 +1826,30 @@ export type Product$saleItemsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.SaleItemScalarFieldEnum | Prisma.SaleItemScalarFieldEnum[]
+}
+
+/**
+ * Product.PanelSupplyItems
+ */
+export type Product$PanelSupplyItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PanelSupplyItem
+   */
+  select?: Prisma.PanelSupplyItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PanelSupplyItem
+   */
+  omit?: Prisma.PanelSupplyItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PanelSupplyItemInclude<ExtArgs> | null
+  where?: Prisma.PanelSupplyItemWhereInput
+  orderBy?: Prisma.PanelSupplyItemOrderByWithRelationInput | Prisma.PanelSupplyItemOrderByWithRelationInput[]
+  cursor?: Prisma.PanelSupplyItemWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PanelSupplyItemScalarFieldEnum | Prisma.PanelSupplyItemScalarFieldEnum[]
 }
 
 /**

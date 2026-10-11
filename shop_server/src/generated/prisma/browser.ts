@@ -57,3 +57,13 @@ export type Sale = Prisma.SaleModel
  * 
  */
 export type SaleItem = Prisma.SaleItemModel
+/**
+ * Model PanelSupply
+ * 
+ */
+export type PanelSupply = Prisma.PanelSupplyModel
+/**
+ * Model PanelSupplyItem
+ * 
+ */
+export type PanelSupplyItem = Prisma.PanelSupplyItemModel

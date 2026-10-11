@@ -1,1 +1,1 @@
-export { PanelSettingsProducts } from'./PanelSettingsProducts';
+export { SettingProducts } from "./SettingProducts";

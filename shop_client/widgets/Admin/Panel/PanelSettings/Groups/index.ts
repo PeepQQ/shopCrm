@@ -1,1 +1,1 @@
-export { PanelSettingGroups } from './PanelSettingGroups';
+export { SettingGroups } from "./SettingGroups";

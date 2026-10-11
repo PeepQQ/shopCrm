@@ -20,13 +20,13 @@ export const PanelHeader = () => {
           <span className={styles.menuItem}>Создать товар</span>
         </ProductFormModal>
         <Link
-          href={links.admin.panel(panelId).table.root}
+          href={links.admin.panel(panelId).groups.root}
           className={styles.menuItem}
         >
           Таблица
         </Link>
         <Link
-          href={links.admin.panel(panelId).salesList}
+          href={links.admin.panel(panelId).history.sale}
           className={styles.menuItem}
         >
           История

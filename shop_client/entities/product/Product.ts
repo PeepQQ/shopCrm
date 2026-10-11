@@ -5,3 +5,10 @@ export interface Product {
   panelId: number;
   name: string;
 }
+
+export const productFieldsTranslation = {
+  id: "id",
+  cost: "Цена",
+  count: "Кол-во",
+  name: "Название",
+};

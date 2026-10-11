@@ -1,9 +1,9 @@
 import type { PageProps } from "@/app/next.type";
 import { getPanelGroupsServer } from "@/shared/api/server";
-import { PanelSettingGroups } from "@/widgets/Admin/Panel/PanelSettings";
+import { SettingGroups } from "@/widgets/Admin/Panel/PanelSettings";
 
-export default async function PanelSettingGroupsPage({ params }: PageProps) {
+export default async function SettingGroupsPage({ params }: PageProps) {
   const { panelId } = await params;
   const groups = await getPanelGroupsServer(panelId);
-  return <PanelSettingGroups groups={groups} />;
+  return <SettingGroups groups={groups} />;
 }

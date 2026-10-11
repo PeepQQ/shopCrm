@@ -1,6 +1,14 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { SaleService } from './sale.service';
-import { CreateSaleDto } from './dto';
+import { CreateSaleDto, SalesHistoryQuery } from './dto';
 
 @Controller('/admin/sale')
 export class SaleController {
@@ -11,8 +19,11 @@ export class SaleController {
     return await this.saleService.create(data);
   }
 
-  @Get('/list/:panelId')
-  async getSalesList(@Param('panelId') panelId: number) {
-    return await this.saleService.salesList({ panelId });
+  @Get('/:panelId/history')
+  async getSalesList(
+    @Param('panelId', ParseIntPipe) panelId: number,
+    @Query() query: SalesHistoryQuery,
+  ) {
+    return await this.saleService.salesHistory(panelId, query);
   }
 }

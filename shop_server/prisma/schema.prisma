@@ -48,6 +48,7 @@ model Panel {
   groups   Group[]
   products  Product[]
   sales     Sale[]
+  panelSupply PanelSupply[]
 }
 
 model Group {
@@ -78,6 +79,7 @@ model Product {
   groupProducts GroupProducts[]
   panel    Panel  @relation(fields: [panelId], references: [id])
   saleItems    SaleItem[]
+  PanelSupplyItems PanelSupplyItem[]
 }
 
 model GroupProducts {
@@ -111,4 +113,23 @@ model SaleItem {
 
   sale      Sale    @relation(fields: [saleId], references: [id])
   product Product @relation(fields: [productId], references: [id])
+}
+
+model PanelSupply {
+  id      Int @id @default(autoincrement())
+  panelId   Int
+  dateCreated DateTime @default(now())
+
+  panel Panel @relation(fields: [panelId], references: [id])
+  panelSupplyItems PanelSupplyItem[]
+}
+
+model PanelSupplyItem {
+  id      Int @id @default(autoincrement())
+  productId Int
+  count     Int
+  supplyId  Int
+
+  product Product @relation(fields: [productId], references: [id])
+  panelSupply PanelSupply @relation(fields: [supplyId], references: [id])
 }

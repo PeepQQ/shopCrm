@@ -1,0 +1,11 @@
+.groupsLayout {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 16px;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}

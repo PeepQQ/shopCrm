@@ -17,7 +17,9 @@ export const PanelsList = ({ panels }: PanelsListProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={clsx(styles.panelsListMenuWrapper, isOpen ? styles.open : "")}>
+    <div
+      className={clsx(styles.panelsListMenuWrapper, isOpen ? styles.open : "")}
+    >
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         className={styles.panelsListTrigger}
@@ -31,7 +33,7 @@ export const PanelsList = ({ panels }: PanelsListProps) => {
               <Link
                 key={panel.id}
                 className={styles.panelListItem}
-                href={links.admin.panel(panel.id).table.root}
+                href={links.admin.panel(panel.id).groups.root}
               >
                 {panel.name}
               </Link>

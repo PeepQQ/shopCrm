@@ -1,7 +1,6 @@
 import { cookies } from "next/headers";
 import { Panel } from "@/entities/panel";
 import { Product } from "@/entities/product";
-import { Sale } from "@/entities/sale";
 
 const ApiUrl = process.env.API_URL;
 
@@ -31,19 +30,5 @@ export const getPanelProductsServer = async (
       },
     },
   );
-  return await response.json();
-};
-
-export const getPanelSalesListServer = async (
-  panelId: number | string,
-): Promise<Sale[]> => {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("access_token");
-  const response = await fetch(`${ApiUrl}/admin/sale/list/${panelId}`, {
-    cache: "no-store",
-    headers: {
-      Cookie: `${token?.name}=${token?.value}`,
-    },
-  });
   return await response.json();
 };
