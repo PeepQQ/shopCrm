@@ -37,3 +37,14 @@ jobs:
         run: npm run build
         env:
           API_URL: ${{ secrets.API_URL }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./shop_client
+          push: true
+          tags: ghcr.io/${{ github.repository }}/shop_client:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            API_URL=${{ secrets.API_URL }}
