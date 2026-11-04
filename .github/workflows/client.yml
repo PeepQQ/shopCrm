@@ -9,24 +9,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: Test
 
     defaults:
       run:
-        working-directory: ./shop_client
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
+        working-directory: shop_client
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+          cache-dependency-path: 'shop_client/package-lock.json'
 
-    - name: Build
-      run: |
-        npm install
-        npm build
+      - name: Install dependencies
+        run: npm install
+
+      - name: Clean Next.js cache
+        run: |
+          rm -rf .next
+          rm -rf node_modules/.cache
+        
+      - name: Build project
+        run: npm run build
+        env:
+          API_URL: ${{ secrets.API_URL }}
