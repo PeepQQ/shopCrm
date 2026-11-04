@@ -1,5 +1,5 @@
 import { GroupTable } from "@/features/Admin/Groups/GroupTable";
-import { OperationPanelSale } from "@/features/Admin/Operations";
+import { OperationPanelSale } from "@/features/Admin/Sale/OperationPanelSale";
 import { AddToSaleModal } from "@/features/Admin/Sale/AddToSaleModal";
 import { getGroupProductsServer } from "@/shared/api/server";
 

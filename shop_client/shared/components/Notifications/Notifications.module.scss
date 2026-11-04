@@ -1,0 +1,38 @@
+.notifications {
+  position: fixed;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.notificationItem {
+  padding: 16px;
+  background: var(--surface);
+  border: 1px var(--border) solid;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: var(--shadowSm);
+  animation: hide 5s forwards;
+
+  p {
+    font-size: 14px;
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

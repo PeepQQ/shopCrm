@@ -1,7 +1,7 @@
 import { GroupTable } from "@/features/Admin/Groups/GroupTable";
 import { AddSupply } from "@/features/Admin/Supply/AddSupply";
 import { getGroupProductsServer } from "@/shared/api/server";
-import { OperationPanelSupply } from "@/features/Admin/Operations/Supply/OperationPanelSupply";
+import { OperationPanelSupply } from "@/features/Admin/Supply/OperationPanelSupply";
 
 interface Props {
   params: Promise<{

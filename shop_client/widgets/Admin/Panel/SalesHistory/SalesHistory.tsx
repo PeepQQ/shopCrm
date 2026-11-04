@@ -1,6 +1,6 @@
 import { Sale } from "@/entities/sale";
 import styles from "./SalesHistory.module.scss";
-import { formatDateToLocale } from "@/shared/config";
+import { formatDateToLocale } from "@/shared/utils";
 
 import {
   Table,
@@ -38,25 +38,20 @@ export const SalesHistory = ({ sales, panelId }: PanelSalesListProps) => {
               <TrExpand
                 key={sale.id}
                 extendContent={
-                  <Td className={styles.saleItems} colSpan={10}>
-                    <Table>
-                      <Thead>
-                        <Tr>
-                          <Th>Товар</Th>
-                          <Th>Сумма</Th>
-                          <Th>Скидка %</Th>
-                        </Tr>
-                      </Thead>
-                      <Tbody>
+                  <Td className={styles.saleItemsWrapper} colSpan={3}>
+                    <div className={styles.saleItems}>
+                      <div className={styles.saleItemsList}>
                         {sale.saleItems.map((saleItem) => (
-                          <Tr key={saleItem.id} className={styles.saleItem}>
-                            <Td>{saleItem.product.name}</Td>
-                            <Td>{saleItem.price}</Td>
-                            <Td>{saleItem.discountPercent}%</Td>
-                          </Tr>
+                          <div key={saleItem.id} className={styles.saleItem}>
+                            <span>{saleItem.product.name}</span>
+                            <span>
+                              {saleItem.price}
+                              {` [${saleItem.discountPercent}%]`}
+                            </span>
+                          </div>
                         ))}
-                      </Tbody>
-                    </Table>
+                      </div>
+                    </div>
                   </Td>
                 }
               >

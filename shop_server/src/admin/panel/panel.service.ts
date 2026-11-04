@@ -33,8 +33,17 @@ export class PanelService {
 
     if (!supply) throw new BadRequestException();
 
-    return await this.prisma.panelSupplyItem.createMany({
+    await this.prisma.panelSupplyItem.createMany({
       data: items.map((item) => ({ supplyId: supply.id, ...item })),
     });
+
+    return this.prisma.$transaction(
+      items.map((item) =>
+        this.prisma.product.update({
+          where: { panelId, id: item.productId },
+          data: { count: { increment: item.count } },
+        }),
+      ),
+    );
   }
 }

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { StoreProvider } from "@/shared/providers";
+import { NotificationsProvider, StoreProvider } from "@/features/Providers";
 
 import "@/shared/styles/variables.scss";
 import "@/shared/styles/global.scss";
-import { AuthProvider } from "@/shared/providers/AuthProvider";
+import { AuthProvider } from "@/features/Providers/AuthProvider";
 
 const geistSans = Geist({
   variable: "--font-head",
@@ -33,7 +33,9 @@ export default function RootLayout({
     >
       <body>
         <StoreProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <NotificationsProvider>
+            <AuthProvider>{children}</AuthProvider>
+          </NotificationsProvider>
         </StoreProvider>
       </body>
     </html>

@@ -20,6 +20,7 @@ import { createProduct, updateProduct } from "@/shared/api/client/Product.api";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Product } from "@/entities/product";
+import { notify } from "@/shared/utils/notif";
 
 interface ProductFormModalProps {
   children: React.ReactNode;
@@ -53,7 +54,7 @@ export const ProductFormModal = ({
       setIsOpen(false);
       router.refresh();
     } catch (err) {
-      alert(err);
+      notify.apiError(err);
     }
   };
 

@@ -7,7 +7,7 @@ import {
   subtractPercent,
   getDecreasePercent,
   toFixedLength,
-} from "@/shared/config";
+} from "@/shared/utils";
 import { SaleItem } from "@/entities/sale";
 import { Button } from "@/shared/components/Button";
 import { useAppSelector } from "@/shared/hooks";

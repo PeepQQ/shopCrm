@@ -30,7 +30,7 @@ export const getPanelProducts = async (
 
 interface CreatePanelSupplyData {
   panelId: string;
-  items: SupplyItem[];
+  items: { productId: number; count: number }[];
 }
 
 export const createPanelSupply = async (

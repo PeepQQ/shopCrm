@@ -8,6 +8,7 @@ import { GroupType } from "@/entities/group/Group";
 import { NodeRendererProps, Tree } from "react-arborist";
 import { changeParent } from "@/shared/api/client";
 import { useRouter } from "next/navigation";
+import { notify } from "@/shared/utils/notif";
 
 interface PanelSettingGroupsProps {
   groups: Group[];
@@ -34,7 +35,7 @@ export const SettingGroups = ({ groups }: PanelSettingGroupsProps) => {
       });
       router.refresh();
     } catch (err) {
-      alert(err);
+      notify.apiError(err);
     }
   };
 

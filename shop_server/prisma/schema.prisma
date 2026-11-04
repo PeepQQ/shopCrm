@@ -27,6 +27,7 @@ model User {
   role    UserRole @default(USER)
 
   refreshTokens RefreshToken[]
+  auditLogs   AuditLog[]
 }
 
 model RefreshToken {
@@ -132,4 +133,16 @@ model PanelSupplyItem {
 
   product Product @relation(fields: [productId], references: [id])
   panelSupply PanelSupply @relation(fields: [supplyId], references: [id])
+}
+
+model AuditLog {
+  id         Int @id @default(autoincrement())
+  
+  userId     Int
+
+  action    String
+  entityType  String
+  entityId    Int
+
+  user       User     @relation(fields: [userId], references: [id])
 }

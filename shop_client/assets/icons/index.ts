@@ -6,3 +6,4 @@ export { WindowIcon } from "./Window";
 export { FolderIcon } from "./Folder";
 export { FolderOpenIcon } from "./FolderOpen";
 export { CalendarIcon } from "./Calendar";
+export { PlaneIcon } from "./Plane";

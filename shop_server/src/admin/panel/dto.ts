@@ -24,7 +24,4 @@ export class CreatePanelSupplyDto {
 
   @IsNumber()
   count!: number;
-
-  @IsOptional()
-  supplyId?: number;
 }

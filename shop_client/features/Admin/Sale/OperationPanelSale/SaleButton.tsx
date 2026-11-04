@@ -1,10 +1,11 @@
 "use client";
 import { CartIcon } from "@/assets/icons";
-import styles from "./SaleButton.module.scss";
+import styles from "./OperationPanelSale.module.scss";
 import { createSale } from "@/shared/api/client";
 import { useAppSelector } from "@/shared/hooks";
 
 import { useParams } from "next/navigation";
+import { notify } from "@/shared/utils/notif";
 
 export const SaleButton = () => {
   const { panelId } = useParams<{ panelId: string }>();
@@ -23,17 +24,17 @@ export const SaleButton = () => {
     });
 
     try {
-      const res = await createSale({
+      await createSale({
         panelId: Number(panelId),
         saleItems: formattedSaleItems,
       });
     } catch (err) {
-      alert(err);
+      notify.apiError(err);
     }
   };
 
   return (
-    <button className={styles.saleButton} onClick={handleSale}>
+    <button className={styles.operationPanelAction} onClick={handleSale}>
       <CartIcon className={styles.saleButtonIcon} />
     </button>
   );

@@ -12,6 +12,7 @@ import { useState } from "react";
 import { createPanel } from "@/shared/api/client/Panel.api";
 import { useRouter } from "next/navigation";
 import { links } from "@/shared/config/links";
+import { notify } from "@/shared/utils/notif";
 
 export const CreatePanel = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
@@ -25,7 +26,7 @@ export const CreatePanel = ({ children }: { children: React.ReactNode }) => {
       router.refresh();
       setIsOpen(false);
     } catch (err) {
-      alert(err);
+      notify.apiError(err);
     }
   };
 

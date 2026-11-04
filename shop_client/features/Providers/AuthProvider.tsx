@@ -1,5 +1,5 @@
 "use client";
-import { getMe, refresh } from "../api";
+import { getMe, refresh } from "../../shared/api";
 import { setUser } from "@/store/user/user.slice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

@@ -8,7 +8,7 @@ import { Group } from "@/entities/group";
 import { GroupType } from "@/entities/group/Group";
 import { deleteGroup } from "@/shared/api/client";
 import { useRouter } from "next/navigation";
-import { getApiError } from "@/shared/config";
+import { notify } from "@/shared/utils/notif";
 
 interface GroupItemActionsProps {
   group: Group;
@@ -36,7 +36,7 @@ export const GroupItemActions = ({ group }: GroupItemActionsProps) => {
       await deleteGroup(group.id);
       router.refresh();
     } catch (err) {
-      alert(getApiError(err)?.message);
+      notify.apiError(err);
     }
   };
 

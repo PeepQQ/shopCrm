@@ -12,6 +12,7 @@ import { useParams, useRouter } from "next/navigation";
 import { createGroup } from "@/shared/api/client";
 import { Button } from "@/shared/components/Button";
 import { GroupType } from "@/entities/group/Group";
+import { notify } from "@/shared/utils/notif";
 
 interface GroupModalProps {
   children: React.ReactNode;
@@ -49,7 +50,7 @@ export const GroupFormModal = ({
       closeOpenModal();
       router.refresh();
     } catch (err) {
-      alert(err);
+      notify.apiError(err);
     }
   };
 

@@ -4,33 +4,25 @@ import styles from "./PanelHeader.module.scss";
 import { ProductFormModal } from "@/features/Admin/ProductFormModal";
 import { links } from "@/shared/config/links";
 import { useParams } from "next/navigation";
+import { panelHeaderLinks } from "./config";
 
 export const PanelHeader = () => {
   const { panelId } = useParams<{ panelId: string }>();
   return (
     <div className={styles.panelHeader}>
       <div className={styles.menu}>
-        <Link
-          href={links.admin.panel(panelId).settings.products}
-          className={styles.menuItem}
-        >
-          Настройки
-        </Link>
+        {panelHeaderLinks.map((link) => (
+          <Link
+            key={link.text}
+            href={link.href(panelId)}
+            className={styles.menuItem}
+          >
+            {link.text}
+          </Link>
+        ))}
         <ProductFormModal>
           <span className={styles.menuItem}>Создать товар</span>
         </ProductFormModal>
-        <Link
-          href={links.admin.panel(panelId).groups.root}
-          className={styles.menuItem}
-        >
-          Таблица
-        </Link>
-        <Link
-          href={links.admin.panel(panelId).history.sale}
-          className={styles.menuItem}
-        >
-          История
-        </Link>
       </div>
     </div>
   );

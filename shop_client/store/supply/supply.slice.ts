@@ -15,10 +15,13 @@ const SupplySlice = createSlice({
     remove: (state, { payload: supplyItem }: PayloadAction<Product>) => {
       return state?.filter((i) => i.id != supplyItem.id);
     },
+    reset: () => {
+      return [];
+    },
   },
 });
 
 const { actions, reducer } = SupplySlice;
 
-export const { add, remove } = actions;
+export const { add, remove, reset } = actions;
 export default reducer;
