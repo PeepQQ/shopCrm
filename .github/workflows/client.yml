@@ -18,25 +18,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - name: Lowercase repository name
+        run: echo "REPO_LOWER=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
         with:
-          node-version: 22.x
-          cache: 'npm'
-          cache-dependency-path: 'shop_client/package-lock.json'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Clean Next.js cache
-        run: |
-          rm -rf .next
-          rm -rf node_modules/.cache
-        
-      - name: Build project
-        run: npm run build
-        env:
-          API_URL: ${{ secrets.API_URL }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
