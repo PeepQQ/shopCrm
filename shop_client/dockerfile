@@ -1,0 +1,69 @@
+# ==========================================
+# ЭТАП 1: Установка зависимостей
+# ==========================================
+FROM node:24-alpine AS deps
+
+# libc6-compat нужен для корректной работы некоторых пакетов на Alpine Linux
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /app
+
+# Копируем только файлы с зависимостями, чтобы Docker закэшировал этот слой
+# Если package.json не менялся, npm ci не будет запускаться заново при каждой сборке
+COPY package.json package-lock.json* ./
+
+# Устанавливаем зависимости (используем ci для строгого соответствия lock-файлу)
+RUN npm ci
+
+# ==========================================
+# ЭТАП 2: Сборка проекта
+# ==========================================
+FROM node:24-alpine AS builder
+
+WORKDIR /app
+
+# Переносим node_modules из первого этапа
+COPY --from=deps /app/node_modules ./node_modules
+
+# Копируем весь исходный код
+COPY . .
+
+# Отключаем телеметрию Next.js (чтобы не спамил в логи)
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# ВАЖНО: Если вашему проекту нужна переменная API_URL во время сборки (для rewrites), 
+# передайте её здесь. Если она приходит только в рантайме, эту строку можно пропустить.
+ARG API_URL
+ENV API_URL=${API_URL}
+
+# Собираем проект
+RUN npm run build
+
+# ==========================================
+# ЭТАП 3: Финальный легковесный образ
+# ==========================================
+FROM node:24-alpine AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# Создаем непривилегированного пользователя для безопасности
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Копируем standalone-сборку (это минифицированный сервер Next.js)
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+# Копируем статические файлы (CSS, JS-чанки)
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Переключаемся на безопасного пользователя
+USER nextjs
+
+# Открываем порт
+EXPOSE 3000
+ENV PORT 3000
+
+# Запускаем сервер (в standalone-режиме Next.js создает файл server.js)
+CMD ["node", "server.js"]
