@@ -17,11 +17,17 @@ jobs:
 
     steps:
         - uses: actions/checkout@v4
-    
-        - name: Test Codespace Connection
+            
+        - name: Create codespace ssh config
+          env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
-            gh auth login -s codespace
-            gh codespace ssh -c ${{ secrets.Codespace }}
+            gh codespace ssh --config -c ${{ secrets.Codespace }} > /tmp/codespace_ssh_config
+
+        - name: Codespace ssh connection
+          run: |
+            ssh -F /tmp/codespace_ssh_config cs.${{ secrets.Codespace }} -T
+        
       # - uses: actions/checkout@v4
 
       # - name: Lowercase repository name
