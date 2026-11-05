@@ -25,6 +25,8 @@ jobs:
             gh codespace ssh --config -c ${{ secrets.CODESPACE }} > /tmp/codespace_ssh_config
 
         - name: Codespace ssh connection
+          env:
+            GH_TOKEN: ${{ secrets.CODESPACE_TOKEN }}
           run: |
             cat /tmp/codespace_ssh_config
             ssh -F /tmp/codespace_ssh_config cs.${{ secrets.Codespace }}.main -T
