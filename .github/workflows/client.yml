@@ -26,6 +26,7 @@ jobs:
 
         - name: Codespace ssh connection
           run: |
+            cat /tmp/codespace_ssh_config
             ssh -F /tmp/codespace_ssh_config cs.${{ secrets.Codespace }} -T
         
       # - uses: actions/checkout@v4
