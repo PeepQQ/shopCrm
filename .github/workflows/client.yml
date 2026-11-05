@@ -19,7 +19,9 @@ jobs:
         - uses: actions/checkout@v4
     
         - name: Test Codespace Connection
-          run: gh codespace ssh -c ${{ secrets.Codespace }}
+          run: |
+            gh auth login -s codespace
+            gh codespace ssh -c ${{ secrets.Codespace }}
       # - uses: actions/checkout@v4
 
       # - name: Lowercase repository name
