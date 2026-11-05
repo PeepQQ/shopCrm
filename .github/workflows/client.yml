@@ -20,9 +20,9 @@ jobs:
             
         - name: Create codespace ssh config
           env:
-            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GH_TOKEN: ${{ secrets.CODESPACE_TOKEN }}
           run: |
-            gh codespace ssh --config -c redesigned-dollop-97vq557pgqwgc7p7g > /tmp/codespace_ssh_config
+            gh codespace ssh --config -c ${{ secrets.CODESPACE }} > /tmp/codespace_ssh_config
 
         - name: Codespace ssh connection
           run: |
