@@ -2,7 +2,7 @@ name: Shop_Client Build
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "test" ]
   pull_request:
     branches: [ "main" ]
 
