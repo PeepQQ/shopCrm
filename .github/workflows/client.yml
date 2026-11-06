@@ -43,6 +43,7 @@ jobs:
             set -e
             cd /workspaces/shopCrm
             git pull
+            docker builder prune -a -f
             docker compose build
             command docker compose up -d
           '
