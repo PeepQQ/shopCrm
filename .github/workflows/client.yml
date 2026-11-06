@@ -28,18 +28,21 @@ jobs:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           CLIENT_URL: ${{ secrets.CLIENT_URL }}
         run: |
-          ssh -F /tmp/codespace_ssh_config cs.${{ secrets.CODESPACE }}.main -T '
+          cat <<EOF > .env
+          SERVER_PORT=$SERVER_PORT
+          CLIENT_PORT=$CLIENT_PORT
+          JWT_SECRET=$JWT_SECRET
+          CLIENT_URL=$CLIENT_URL
+          EOF
+
+          HOST_NAME="cs.${{ secrets.CODESPACE }}.main"
+          scp -F /tmp/codespace_ssh_config .env $HOST_NAME:/workspaces/shopCrm/.env
+
+          ssh -F /tmp/codespace_ssh_config $HOST_NAME -T '
             set -e
             cd /workspaces/shopCrm
-            ls
             git pull
-            cat <<EOF > .env
-            SERVER_PORT='"$SERVER_PORT"'
-            CLIENT_PORT='"$CLIENT_PORT"'
-            JWT_SECRET='"$JWT_SECRET"'
-            CLIENT_URL='"$CLIENT_URL"'
-            EOF
-            
             docker compose build
             docker compose up -d
+            compose up -d
           '
