@@ -9,7 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: Сodespace
+    environment: Codespace
 
     steps:
       - uses: actions/checkout@v4
