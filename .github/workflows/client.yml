@@ -30,7 +30,6 @@ jobs:
             ls
             
             git pull
-            docker build -f ./shop_client/dockerfile -t shop_client ./shop_client
-            docker stop shop_client || true
-            docker run -d --rm -p 3000:3000 --name shop_client shop_client
+            docker сompose build
+            docker compose up -d
           '
