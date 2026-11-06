@@ -43,6 +43,5 @@ jobs:
             cd /workspaces/shopCrm
             git pull
             docker compose build
-            docker compose up -d
-            compose up -d
+            command docker compose up -d
           '
