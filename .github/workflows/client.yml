@@ -30,6 +30,6 @@ jobs:
             ls
             
             git pull
-            docker сompose build
+            docker compose build
             docker compose up -d
           '
