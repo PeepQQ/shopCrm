@@ -28,7 +28,6 @@ jobs:
             set -e
             cd /workspaces/shopCrm
             ls
-            
             git pull
             docker compose build
             docker compose up -d
