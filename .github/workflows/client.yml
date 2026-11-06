@@ -9,7 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: Test
+    environment: Сodespace
 
     steps:
       - uses: actions/checkout@v4
@@ -23,6 +23,10 @@ jobs:
       - name: Codespace build and run new image
         env:
           GH_TOKEN: ${{ secrets.CODESPACE_TOKEN }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          CLIENT_PORT: ${{ secrets.CLIENT_PORT }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          CLIENT_URL: ${{ secrets.CLIENT_URL }}
         run: |
           ssh -F /tmp/codespace_ssh_config cs.${{ secrets.Codespace }}.main -T '
             set -e
