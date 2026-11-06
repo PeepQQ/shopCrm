@@ -33,6 +33,13 @@ jobs:
             cd /workspaces/shopCrm
             ls
             git pull
+            cat <<EOF > .env
+            SERVER_PORT='"$SERVER_PORT"'
+            CLIENT_PORT='"$CLIENT_PORT"'
+            JWT_SECRET='"$JWT_SECRET"'
+            CLIENT_URL='"$CLIENT_URL"'
+            EOF
+            
             docker compose build
             docker compose up -d
           '
