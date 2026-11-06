@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:16-alpine
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d nestdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nestdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  server:
+    build: ./shop_server
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/nestdb?schema=public
+      PORT: ${SERVER_PORT}
+      DOCKER_CONTAINER: "true"
+      CLIENT_URL: ${CLIENT_URL}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  client:
+    build:
+      context: ./shop_client
+      args:
+        API_URL: http://server:${SERVER_PORT}
+    ports:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    depends_on:
+      - server
+    environment:
+      API_URL: http://server:${SERVER_PORT}
+
+volumes:
+  pgdata:

@@ -60,7 +60,8 @@ export const ModelName = {
   Sale: 'Sale',
   SaleItem: 'SaleItem',
   PanelSupply: 'PanelSupply',
-  PanelSupplyItem: 'PanelSupplyItem'
+  PanelSupplyItem: 'PanelSupplyItem',
+  AuditLog: 'AuditLog'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -183,6 +184,17 @@ export const PanelSupplyItemScalarFieldEnum = {
 } as const
 
 export type PanelSupplyItemScalarFieldEnum = (typeof PanelSupplyItemScalarFieldEnum)[keyof typeof PanelSupplyItemScalarFieldEnum]
+
+
+export const AuditLogScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  action: 'action',
+  entityType: 'entityType',
+  entityId: 'entityId'
+} as const
+
+export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
 
 
 export const SortOrder = {

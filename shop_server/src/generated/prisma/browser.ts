@@ -67,3 +67,8 @@ export type PanelSupply = Prisma.PanelSupplyModel
  * 
  */
 export type PanelSupplyItem = Prisma.PanelSupplyItemModel
+/**
+ * Model AuditLog
+ * 
+ */
+export type AuditLog = Prisma.AuditLogModel

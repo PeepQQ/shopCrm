@@ -1,4 +1,4 @@
-name: Shop_Client Build
+name: Deploy
 
 on:
   push:
@@ -7,34 +7,30 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     environment: Test
 
-    defaults:
-      run:
-        working-directory: shop_client
-
     steps:
       - uses: actions/checkout@v4
+            
+      - name: Create codespace ssh config
+        env:
+          GH_TOKEN: ${{ secrets.CODESPACE_TOKEN }}
+        run: |
+          gh codespace ssh --config -c ${{ secrets.CODESPACE }} > /tmp/codespace_ssh_config
 
-      - name: Lowercase repository name
-        run: echo "REPO_LOWER=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./shop_client
-          push: true
-          tags: ghcr.io/${{ env.REPO_LOWER }}/shop_client:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          build-args: |
-            API_URL=${{ secrets.API_URL }}
+      - name: Codespace build and run new image
+        env:
+          GH_TOKEN: ${{ secrets.CODESPACE_TOKEN }}
+        run: |
+          ssh -F /tmp/codespace_ssh_config cs.${{ secrets.Codespace }}.main -T '
+            set -e
+            cd /workspaces/shopCrm
+            ls
+            
+            git pull
+            docker build -f ./shop_client/dockerfile -t shop_client ./shop_client
+            docker stop shop_client || true
+            docker run -d --rm -p 3000:3000 --name shop_client shop_client
+          '

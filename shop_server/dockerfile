@@ -1,0 +1,53 @@
+# ==========================================
+# ЭТАП 1: Установка зависимостей
+# ==========================================
+FROM node:24-alpine AS deps
+
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+
+RUN npm ci
+
+# ==========================================
+# ЭТАП 2: Сборка проекта
+# ==========================================
+FROM node:24-alpine AS builder
+
+WORKDIR /app
+
+ARG API_URL
+ENV API_URL=$API_URL
+
+COPY --from=deps /app/node_modules ./node_modules
+
+COPY . .
+
+RUN npx prisma generate
+RUN npm run build
+
+# ==========================================
+# ЭТАП 3: Финальный легковесный образ
+# ==========================================
+FROM node:24-alpine AS runner
+
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+COPY prisma ./prisma/
+COPY prisma.config.ts ./
+RUN npm ci --omit=dev && npm cache clean --force
+RUN npx prisma generate
+
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nestjs
+
+COPY --from=builder /app/dist ./dist
+
+RUN chown -R nestjs:nodejs /app
+
+USER nestjs
+
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/src/main.js"]
