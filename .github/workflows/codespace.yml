@@ -28,12 +28,16 @@ jobs:
           CLIENT_PORT: ${{ secrets.CLIENT_PORT }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           CLIENT_URL: ${{ secrets.CLIENT_URL }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
         run: |
           cat <<EOF > .env
           SERVER_PORT=$SERVER_PORT
           CLIENT_PORT=$CLIENT_PORT
           JWT_SECRET=$JWT_SECRET
           CLIENT_URL=$CLIENT_URL
+          SMTP_USER=$SMTP_USER
+          SMTP_PASS=$SMTP_PASS
           EOF
 
           HOST_NAME="cs.${{ secrets.CODESPACE }}.main"

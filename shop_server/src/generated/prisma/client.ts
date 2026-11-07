@@ -45,6 +45,11 @@ export { Prisma }
  */
 export type User = Prisma.UserModel
 /**
+ * Model UserInvites
+ * 
+ */
+export type UserInvites = Prisma.UserInvitesModel
+/**
  * Model RefreshToken
  * 
  */

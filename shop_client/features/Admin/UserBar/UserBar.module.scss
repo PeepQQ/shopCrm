@@ -1,0 +1,22 @@
+.userBar {
+  padding: 16px;
+  background: var(--surface);
+  border-radius: 16px;
+  border: 1px var(--border) solid;
+  box-shadow: var(--shadowSm);
+}
+
+.userBarHead {
+  display: flex;
+  gap: 8px;
+
+  p {
+    font-size: 14px;
+    line-height: 100%;
+  }
+
+  span {
+    line-height: 100%;
+    padding: 4;
+  }
+}

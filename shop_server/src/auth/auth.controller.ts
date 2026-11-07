@@ -8,7 +8,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import type { Login, Register } from './types';
+import type { Login, RegisterDto } from './types';
 import { JwtAuthGuard } from '../jwt/jwtAuth.guard';
 import { type Response, type Request as RequestType } from 'express';
 
@@ -17,7 +17,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  async register(@Body() data: Register) {
+  async register(@Body() data: RegisterDto) {
     return await this.authService.register(data);
   }
 

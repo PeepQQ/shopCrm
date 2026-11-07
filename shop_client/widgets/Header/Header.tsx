@@ -1,7 +1,5 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
-import { links } from "@/shared/config/links";
-import { UserBar } from "./UserBar";
 
 export const Header = () => {
   return (
@@ -23,7 +21,6 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
-      <UserBar />
     </header>
   );
 };

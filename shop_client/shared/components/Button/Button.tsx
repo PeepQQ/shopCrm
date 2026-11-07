@@ -8,6 +8,7 @@ export const Button = ({
   variant = "primary",
   size = "default",
   fullWidth,
+  loading,
   ...props
 }: ButtonProps) => {
   return (
@@ -20,6 +21,7 @@ export const Button = ({
         fullWidth && styles.fullWidth,
       )}
       {...props}
+      disabled={loading}
     >
       {children}
     </button>

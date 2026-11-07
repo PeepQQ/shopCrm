@@ -15,7 +15,7 @@ export const Input = ({
 }: InputProps) => {
   return (
     <label className={clsx(labelClassName, styles.label)} htmlFor={rest.id}>
-      {label}
+      <span>{label}</span>
       <input className={clsx(className, styles.input)} {...rest} />
     </label>
   );

@@ -5,11 +5,12 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Login, Register } from './types';
+import { Login, RegisterDto } from './types';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { createHash } from 'crypto';
 import { User } from 'src/generated/prisma/client';
+import { verifyToken } from 'src/utils';
 
 @Injectable()
 export class AuthService {
@@ -18,13 +19,25 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async register(data: Register) {
+  async register(data: RegisterDto) {
+    const isExists = await this.prisma.user.findUnique({
+      where: {
+        email: data.email,
+      },
+    });
+
+    if (isExists)
+      throw new BadRequestException(
+        'Пользователь с таким Email уже существует',
+      );
+
     const passwordHash = await bcrypt.hash(data.password, 12);
 
     const user = await this.prisma.user.create({
       data: {
         email: data.email,
         password: passwordHash,
+        name: data.name,
       },
     });
 
@@ -106,7 +119,7 @@ export class AuthService {
   }
 
   async refresh(refreshToken: string) {
-    const payload = await this.jwtService.verifyAsync(refreshToken);
+    const payload = await verifyToken(refreshToken);
 
     const tokenHash = createHash('sha256').update(refreshToken).digest('hex');
 

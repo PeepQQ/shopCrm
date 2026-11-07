@@ -2,6 +2,10 @@ export const links = {
   login: "/login",
   admin: {
     root: "/admin",
+    settings: {
+      root: "/admin/settings",
+      inviteUser: "/admin/settings/inviteUser",
+    },
     panel: (panelId: string | number) => ({
       root: `/admin/panel/${panelId}`,
 

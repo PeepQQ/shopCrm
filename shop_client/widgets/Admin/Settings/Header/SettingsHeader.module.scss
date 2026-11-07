@@ -1,0 +1,25 @@
+.settingsHeader {
+  padding: 8px 16px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px var(--border) solid;
+  box-shadow: var(--shadow);
+}
+
+.menu {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.linkItem {
+  font-size: 14px;
+
+  &:hover {
+    font-weight: 600;
+  }
+
+  &.active {
+    font-weight: 600;
+  }
+}

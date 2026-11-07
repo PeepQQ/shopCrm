@@ -22,12 +22,17 @@ enum GroupType {
 model User {
   id    Int     @default(autoincrement()) @id
   email String  @unique
-  name  String?
+  name  String
   password String
   role    UserRole @default(USER)
 
   refreshTokens RefreshToken[]
   auditLogs   AuditLog[]
+}
+
+model UserInvites {
+  id  Int @default(autoincrement()) @id
+  token String @unique
 }
 
 model RefreshToken {

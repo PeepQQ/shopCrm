@@ -7,3 +7,4 @@ export { FolderIcon } from "./Folder";
 export { FolderOpenIcon } from "./FolderOpen";
 export { CalendarIcon } from "./Calendar";
 export { PlaneIcon } from "./Plane";
+export { SettingsIcon } from "./Settings";
