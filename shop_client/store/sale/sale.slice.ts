@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { SaleItem } from "@/entities/sale";
+import { count } from "console";
 
 type SaleState = SaleItem[] | [];
 
@@ -13,6 +14,8 @@ const SaleSlice = createSlice({
       const existingItem = state?.find(
         (item) => item.product.id === saleItem.product.id,
       );
+
+      if (!(existingItem ?? saleItem).product.count) return;
 
       const actualizedCount =
         (existingItem ?? saleItem).product.count - saleItem.count;
@@ -40,8 +43,21 @@ const SaleSlice = createSlice({
         },
       ];
     },
-    remove: (state, { payload: sale }: PayloadAction<SaleItem>) => {
-      return state?.filter((i) => i.product.id != sale.product.id);
+    remove: (state, { payload: saleItem }: PayloadAction<SaleItem>) => {
+      const existingItem = state?.find(
+        (item) => item.product.id === saleItem.product.id,
+      );
+
+      const updatedState = state?.filter((item) => item.id != saleItem.id);
+
+      return updatedState?.map((item) =>
+        item.product.id === existingItem?.product.id
+          ? {
+              ...item,
+              product: { ...item.product, count: item.product.count + 1 },
+            }
+          : item,
+      );
     },
   },
 });

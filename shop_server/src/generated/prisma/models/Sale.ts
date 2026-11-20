@@ -30,12 +30,14 @@ export type SaleAvgAggregateOutputType = {
   id: number | null
   panelId: number | null
   total: runtime.Decimal | null
+  userId: number | null
 }
 
 export type SaleSumAggregateOutputType = {
   id: number | null
   panelId: number | null
   total: runtime.Decimal | null
+  userId: number | null
 }
 
 export type SaleMinAggregateOutputType = {
@@ -43,6 +45,7 @@ export type SaleMinAggregateOutputType = {
   panelId: number | null
   total: runtime.Decimal | null
   createdAt: Date | null
+  userId: number | null
 }
 
 export type SaleMaxAggregateOutputType = {
@@ -50,6 +53,7 @@ export type SaleMaxAggregateOutputType = {
   panelId: number | null
   total: runtime.Decimal | null
   createdAt: Date | null
+  userId: number | null
 }
 
 export type SaleCountAggregateOutputType = {
@@ -57,6 +61,7 @@ export type SaleCountAggregateOutputType = {
   panelId: number
   total: number
   createdAt: number
+  userId: number
   _all: number
 }
 
@@ -65,12 +70,14 @@ export type SaleAvgAggregateInputType = {
   id?: true
   panelId?: true
   total?: true
+  userId?: true
 }
 
 export type SaleSumAggregateInputType = {
   id?: true
   panelId?: true
   total?: true
+  userId?: true
 }
 
 export type SaleMinAggregateInputType = {
@@ -78,6 +85,7 @@ export type SaleMinAggregateInputType = {
   panelId?: true
   total?: true
   createdAt?: true
+  userId?: true
 }
 
 export type SaleMaxAggregateInputType = {
@@ -85,6 +93,7 @@ export type SaleMaxAggregateInputType = {
   panelId?: true
   total?: true
   createdAt?: true
+  userId?: true
 }
 
 export type SaleCountAggregateInputType = {
@@ -92,6 +101,7 @@ export type SaleCountAggregateInputType = {
   panelId?: true
   total?: true
   createdAt?: true
+  userId?: true
   _all?: true
 }
 
@@ -186,6 +196,7 @@ export type SaleGroupByOutputType = {
   panelId: number
   total: runtime.Decimal
   createdAt: Date
+  userId: number
   _count: SaleCountAggregateOutputType | null
   _avg: SaleAvgAggregateOutputType | null
   _sum: SaleSumAggregateOutputType | null
@@ -216,6 +227,8 @@ export type SaleWhereInput = {
   panelId?: Prisma.IntFilter<"Sale"> | number
   total?: Prisma.DecimalFilter<"Sale"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"Sale"> | Date | string
+  userId?: Prisma.IntFilter<"Sale"> | number
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   saleItems?: Prisma.SaleItemListRelationFilter
   panel?: Prisma.XOR<Prisma.PanelScalarRelationFilter, Prisma.PanelWhereInput>
 }
@@ -225,6 +238,8 @@ export type SaleOrderByWithRelationInput = {
   panelId?: Prisma.SortOrder
   total?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  user?: Prisma.UserOrderByWithRelationInput
   saleItems?: Prisma.SaleItemOrderByRelationAggregateInput
   panel?: Prisma.PanelOrderByWithRelationInput
 }
@@ -237,6 +252,8 @@ export type SaleWhereUniqueInput = Prisma.AtLeast<{
   panelId?: Prisma.IntFilter<"Sale"> | number
   total?: Prisma.DecimalFilter<"Sale"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"Sale"> | Date | string
+  userId?: Prisma.IntFilter<"Sale"> | number
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   saleItems?: Prisma.SaleItemListRelationFilter
   panel?: Prisma.XOR<Prisma.PanelScalarRelationFilter, Prisma.PanelWhereInput>
 }, "id">
@@ -246,6 +263,7 @@ export type SaleOrderByWithAggregationInput = {
   panelId?: Prisma.SortOrder
   total?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   _count?: Prisma.SaleCountOrderByAggregateInput
   _avg?: Prisma.SaleAvgOrderByAggregateInput
   _max?: Prisma.SaleMaxOrderByAggregateInput
@@ -261,11 +279,13 @@ export type SaleScalarWhereWithAggregatesInput = {
   panelId?: Prisma.IntWithAggregatesFilter<"Sale"> | number
   total?: Prisma.DecimalWithAggregatesFilter<"Sale"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Sale"> | Date | string
+  userId?: Prisma.IntWithAggregatesFilter<"Sale"> | number
 }
 
 export type SaleCreateInput = {
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutSalesInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutSaleInput
   panel: Prisma.PanelCreateNestedOneWithoutSalesInput
 }
@@ -275,12 +295,14 @@ export type SaleUncheckedCreateInput = {
   panelId: number
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  userId: number
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutSaleInput
 }
 
 export type SaleUpdateInput = {
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutSalesNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutSaleNestedInput
   panel?: Prisma.PanelUpdateOneRequiredWithoutSalesNestedInput
 }
@@ -290,6 +312,7 @@ export type SaleUncheckedUpdateInput = {
   panelId?: Prisma.IntFieldUpdateOperationsInput | number
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutSaleNestedInput
 }
 
@@ -298,6 +321,7 @@ export type SaleCreateManyInput = {
   panelId: number
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  userId: number
 }
 
 export type SaleUpdateManyMutationInput = {
@@ -310,6 +334,7 @@ export type SaleUncheckedUpdateManyInput = {
   panelId?: Prisma.IntFieldUpdateOperationsInput | number
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type SaleListRelationFilter = {
@@ -327,12 +352,14 @@ export type SaleCountOrderByAggregateInput = {
   panelId?: Prisma.SortOrder
   total?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type SaleAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   panelId?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type SaleMaxOrderByAggregateInput = {
@@ -340,6 +367,7 @@ export type SaleMaxOrderByAggregateInput = {
   panelId?: Prisma.SortOrder
   total?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type SaleMinOrderByAggregateInput = {
@@ -347,17 +375,61 @@ export type SaleMinOrderByAggregateInput = {
   panelId?: Prisma.SortOrder
   total?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type SaleSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   panelId?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type SaleScalarRelationFilter = {
   is?: Prisma.SaleWhereInput
   isNot?: Prisma.SaleWhereInput
+}
+
+export type SaleCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.SaleCreateWithoutUserInput, Prisma.SaleUncheckedCreateWithoutUserInput> | Prisma.SaleCreateWithoutUserInput[] | Prisma.SaleUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutUserInput | Prisma.SaleCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.SaleCreateManyUserInputEnvelope
+  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+}
+
+export type SaleUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.SaleCreateWithoutUserInput, Prisma.SaleUncheckedCreateWithoutUserInput> | Prisma.SaleCreateWithoutUserInput[] | Prisma.SaleUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutUserInput | Prisma.SaleCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.SaleCreateManyUserInputEnvelope
+  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+}
+
+export type SaleUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.SaleCreateWithoutUserInput, Prisma.SaleUncheckedCreateWithoutUserInput> | Prisma.SaleCreateWithoutUserInput[] | Prisma.SaleUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutUserInput | Prisma.SaleCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.SaleUpsertWithWhereUniqueWithoutUserInput | Prisma.SaleUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.SaleCreateManyUserInputEnvelope
+  set?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  disconnect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  delete?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  update?: Prisma.SaleUpdateWithWhereUniqueWithoutUserInput | Prisma.SaleUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.SaleUpdateManyWithWhereWithoutUserInput | Prisma.SaleUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
+}
+
+export type SaleUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.SaleCreateWithoutUserInput, Prisma.SaleUncheckedCreateWithoutUserInput> | Prisma.SaleCreateWithoutUserInput[] | Prisma.SaleUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SaleCreateOrConnectWithoutUserInput | Prisma.SaleCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.SaleUpsertWithWhereUniqueWithoutUserInput | Prisma.SaleUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.SaleCreateManyUserInputEnvelope
+  set?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  disconnect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  delete?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  connect?: Prisma.SaleWhereUniqueInput | Prisma.SaleWhereUniqueInput[]
+  update?: Prisma.SaleUpdateWithWhereUniqueWithoutUserInput | Prisma.SaleUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.SaleUpdateManyWithWhereWithoutUserInput | Prisma.SaleUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
 }
 
 export type SaleCreateNestedManyWithoutPanelInput = {
@@ -424,9 +496,62 @@ export type SaleUpdateOneRequiredWithoutSaleItemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SaleUpdateToOneWithWhereWithoutSaleItemsInput, Prisma.SaleUpdateWithoutSaleItemsInput>, Prisma.SaleUncheckedUpdateWithoutSaleItemsInput>
 }
 
+export type SaleCreateWithoutUserInput = {
+  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  saleItems?: Prisma.SaleItemCreateNestedManyWithoutSaleInput
+  panel: Prisma.PanelCreateNestedOneWithoutSalesInput
+}
+
+export type SaleUncheckedCreateWithoutUserInput = {
+  id?: number
+  panelId: number
+  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutSaleInput
+}
+
+export type SaleCreateOrConnectWithoutUserInput = {
+  where: Prisma.SaleWhereUniqueInput
+  create: Prisma.XOR<Prisma.SaleCreateWithoutUserInput, Prisma.SaleUncheckedCreateWithoutUserInput>
+}
+
+export type SaleCreateManyUserInputEnvelope = {
+  data: Prisma.SaleCreateManyUserInput | Prisma.SaleCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type SaleUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.SaleWhereUniqueInput
+  update: Prisma.XOR<Prisma.SaleUpdateWithoutUserInput, Prisma.SaleUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.SaleCreateWithoutUserInput, Prisma.SaleUncheckedCreateWithoutUserInput>
+}
+
+export type SaleUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.SaleWhereUniqueInput
+  data: Prisma.XOR<Prisma.SaleUpdateWithoutUserInput, Prisma.SaleUncheckedUpdateWithoutUserInput>
+}
+
+export type SaleUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.SaleScalarWhereInput
+  data: Prisma.XOR<Prisma.SaleUpdateManyMutationInput, Prisma.SaleUncheckedUpdateManyWithoutUserInput>
+}
+
+export type SaleScalarWhereInput = {
+  AND?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
+  OR?: Prisma.SaleScalarWhereInput[]
+  NOT?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
+  id?: Prisma.IntFilter<"Sale"> | number
+  panelId?: Prisma.IntFilter<"Sale"> | number
+  total?: Prisma.DecimalFilter<"Sale"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFilter<"Sale"> | Date | string
+  userId?: Prisma.IntFilter<"Sale"> | number
+}
+
 export type SaleCreateWithoutPanelInput = {
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutSalesInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutSaleInput
 }
 
@@ -434,6 +559,7 @@ export type SaleUncheckedCreateWithoutPanelInput = {
   id?: number
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  userId: number
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutSaleInput
 }
 
@@ -463,19 +589,10 @@ export type SaleUpdateManyWithWhereWithoutPanelInput = {
   data: Prisma.XOR<Prisma.SaleUpdateManyMutationInput, Prisma.SaleUncheckedUpdateManyWithoutPanelInput>
 }
 
-export type SaleScalarWhereInput = {
-  AND?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
-  OR?: Prisma.SaleScalarWhereInput[]
-  NOT?: Prisma.SaleScalarWhereInput | Prisma.SaleScalarWhereInput[]
-  id?: Prisma.IntFilter<"Sale"> | number
-  panelId?: Prisma.IntFilter<"Sale"> | number
-  total?: Prisma.DecimalFilter<"Sale"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  createdAt?: Prisma.DateTimeFilter<"Sale"> | Date | string
-}
-
 export type SaleCreateWithoutSaleItemsInput = {
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutSalesInput
   panel: Prisma.PanelCreateNestedOneWithoutSalesInput
 }
 
@@ -484,6 +601,7 @@ export type SaleUncheckedCreateWithoutSaleItemsInput = {
   panelId: number
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  userId: number
 }
 
 export type SaleCreateOrConnectWithoutSaleItemsInput = {
@@ -505,10 +623,41 @@ export type SaleUpdateToOneWithWhereWithoutSaleItemsInput = {
 export type SaleUpdateWithoutSaleItemsInput = {
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutSalesNestedInput
   panel?: Prisma.PanelUpdateOneRequiredWithoutSalesNestedInput
 }
 
 export type SaleUncheckedUpdateWithoutSaleItemsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  panelId?: Prisma.IntFieldUpdateOperationsInput | number
+  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type SaleCreateManyUserInput = {
+  id?: number
+  panelId: number
+  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+}
+
+export type SaleUpdateWithoutUserInput = {
+  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  saleItems?: Prisma.SaleItemUpdateManyWithoutSaleNestedInput
+  panel?: Prisma.PanelUpdateOneRequiredWithoutSalesNestedInput
+}
+
+export type SaleUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  panelId?: Prisma.IntFieldUpdateOperationsInput | number
+  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutSaleNestedInput
+}
+
+export type SaleUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   panelId?: Prisma.IntFieldUpdateOperationsInput | number
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -519,11 +668,13 @@ export type SaleCreateManyPanelInput = {
   id?: number
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  userId: number
 }
 
 export type SaleUpdateWithoutPanelInput = {
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutSalesNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutSaleNestedInput
 }
 
@@ -531,6 +682,7 @@ export type SaleUncheckedUpdateWithoutPanelInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutSaleNestedInput
 }
 
@@ -538,6 +690,7 @@ export type SaleUncheckedUpdateManyWithoutPanelInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -576,6 +729,8 @@ export type SaleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   panelId?: boolean
   total?: boolean
   createdAt?: boolean
+  userId?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   saleItems?: boolean | Prisma.Sale$saleItemsArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.SaleCountOutputTypeDefaultArgs<ExtArgs>
@@ -586,6 +741,8 @@ export type SaleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   panelId?: boolean
   total?: boolean
   createdAt?: boolean
+  userId?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sale"]>
 
@@ -594,6 +751,8 @@ export type SaleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   panelId?: boolean
   total?: boolean
   createdAt?: boolean
+  userId?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sale"]>
 
@@ -602,24 +761,29 @@ export type SaleSelectScalar = {
   panelId?: boolean
   total?: boolean
   createdAt?: boolean
+  userId?: boolean
 }
 
-export type SaleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "panelId" | "total" | "createdAt", ExtArgs["result"]["sale"]>
+export type SaleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "panelId" | "total" | "createdAt" | "userId", ExtArgs["result"]["sale"]>
 export type SaleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   saleItems?: boolean | Prisma.Sale$saleItemsArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.SaleCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SaleIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
 }
 export type SaleIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   panel?: boolean | Prisma.PanelDefaultArgs<ExtArgs>
 }
 
 export type $SalePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Sale"
   objects: {
+    user: Prisma.$UserPayload<ExtArgs>
     saleItems: Prisma.$SaleItemPayload<ExtArgs>[]
     panel: Prisma.$PanelPayload<ExtArgs>
   }
@@ -628,6 +792,7 @@ export type $SalePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     panelId: number
     total: runtime.Decimal
     createdAt: Date
+    userId: number
   }, ExtArgs["result"]["sale"]>
   composites: {}
 }
@@ -1022,6 +1187,7 @@ readonly fields: SaleFieldRefs;
  */
 export interface Prisma__SaleClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   saleItems<T extends Prisma.Sale$saleItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sale$saleItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SaleItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   panel<T extends Prisma.PanelDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PanelDefaultArgs<ExtArgs>>): Prisma.Prisma__PanelClient<runtime.Types.Result.GetResult<Prisma.$PanelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
@@ -1057,6 +1223,7 @@ export interface SaleFieldRefs {
   readonly panelId: Prisma.FieldRef<"Sale", 'Int'>
   readonly total: Prisma.FieldRef<"Sale", 'Decimal'>
   readonly createdAt: Prisma.FieldRef<"Sale", 'DateTime'>
+  readonly userId: Prisma.FieldRef<"Sale", 'Int'>
 }
     
 

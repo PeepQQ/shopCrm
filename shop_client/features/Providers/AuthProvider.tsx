@@ -15,9 +15,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         dispatch(setUser(res.data));
       } catch {
         try {
-          const user = await refresh();
+          await refresh();
+          const res = await getMe();
 
-          dispatch(setUser(user.data));
+          dispatch(setUser(res.data));
         } catch {}
       }
     };

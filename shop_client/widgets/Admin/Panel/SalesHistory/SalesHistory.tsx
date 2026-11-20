@@ -31,6 +31,7 @@ export const SalesHistory = ({ sales, panelId }: PanelSalesListProps) => {
               <Th>ID</Th>
               <Th>Сумма</Th>
               <Th>Дата</Th>
+              <Th>Продавец</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -58,6 +59,7 @@ export const SalesHistory = ({ sales, panelId }: PanelSalesListProps) => {
                 <Td>{sale.id}</Td>
                 <Td>{sale.total}</Td>
                 <Td>{formatDateToLocale(sale.createdAt)}</Td>
+                <Td>{sale.user.name}</Td>
               </TrExpand>
             ))}
           </Tbody>

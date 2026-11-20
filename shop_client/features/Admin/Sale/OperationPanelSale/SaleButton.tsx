@@ -14,7 +14,7 @@ export const SaleButton = () => {
   const handleSale = async () => {
     if (!saleItems?.length) return null;
     const formattedSaleItems = saleItems?.map((item) => {
-      const { product, ...saleItemData } = item;
+      const { product, id, ...saleItemData } = item;
       const saleItem = {
         ...saleItemData,
         productId: product.id,

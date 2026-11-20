@@ -17,7 +17,7 @@ export default async function GroupSupplyage({ params }: Props) {
   return (
     <div className={"tableContent"}>
       <GroupTable
-        fields={["name", "count"]}
+        fields={[{ key: "name" }, { key: "count" }]}
         products={products}
         actions={(product) => <AddSupply product={product} />}
       />

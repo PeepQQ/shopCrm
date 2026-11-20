@@ -9,5 +9,6 @@ export default async function SalesHistoryPage({
   const query = await searchParams;
   const { panelId } = await params;
   const sales = await getSalesHistoryServer({ panelId, query });
+
   return <SalesHistory sales={sales} panelId={panelId} />;
 }

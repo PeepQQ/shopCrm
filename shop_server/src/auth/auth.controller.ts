@@ -17,8 +17,27 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  async register(@Body() data: RegisterDto) {
-    return await this.authService.register(data);
+  async register(
+    @Body() data: RegisterDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const { accessToken, refreshToken } = await this.authService.register(data);
+
+    res.cookie('access_token', accessToken, {
+      httpOnly: true,
+      secure: process.env.MODE === 'production',
+      sameSite: 'lax',
+      maxAge: 30 * 60 * 1000,
+    });
+
+    res.cookie('refresh_token', refreshToken, {
+      httpOnly: true,
+      secure: process.env.MODE === 'production',
+      sameSite: 'lax',
+      maxAge: 10 * 24 * 60 * 60 * 1000,
+    });
+
+    return { success: true };
   }
 
   @Post('login')
@@ -43,7 +62,6 @@ export class AuthController {
   }
 
   @Get('me')
-  @UseGuards(JwtAuthGuard)
   getMe(@Request() req: RequestType) {
     return req.user;
   }

@@ -7,6 +7,7 @@ import {
   subtractPercent,
   getDecreasePercent,
   toFixedLength,
+  randomID,
 } from "@/shared/utils";
 import { SaleItem } from "@/entities/sale";
 import { Button } from "@/shared/components/Button";
@@ -80,6 +81,7 @@ export const AddToSaleForm = ({
 
   const handleSubmitData = () => {
     handleSubmit({
+      id: randomID(),
       count: count,
       price: totalPrice,
       discountPercent: percent,

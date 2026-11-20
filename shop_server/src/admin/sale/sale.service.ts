@@ -8,7 +8,7 @@ import { moscowDayEnd, moscowDayStart, moscowTodayRange } from 'src/utils';
 export class SaleService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create({ panelId, saleItems }: CreateSaleDto) {
+  async create({ panelId, saleItems }: CreateSaleDto, userId: number) {
     const totalSalePrice = saleItems.reduce(
       (total, item) =>
         total.add(new Prisma.Decimal(item.price).mul(item.count)),
@@ -16,7 +16,7 @@ export class SaleService {
     );
 
     const newSale = await this.prisma.sale.create({
-      data: { panelId: panelId, total: totalSalePrice },
+      data: { panelId: panelId, total: totalSalePrice, userId },
     });
 
     await Promise.all(
@@ -49,6 +49,7 @@ export class SaleService {
     return this.prisma.sale.findMany({
       where,
       include: {
+        user: true,
         saleItems: {
           include: { product: true },
         },

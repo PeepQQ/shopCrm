@@ -12,12 +12,14 @@ interface Props {
 
 export default async function GroupSalePage({ params }: Props) {
   const { groupId } = await params;
-  const products = await getGroupProductsServer(groupId);
+  const products = (await getGroupProductsServer(groupId)).filter(
+    (product) => product.count,
+  );
 
   return (
     <>
       <GroupTable
-        fields={["name", "count", "cost"]}
+        fields={[{ key: "name" }, { key: "count" }, { key: "cost" }]}
         products={products}
         actions={(product) => (
           <AddToSaleModal product={product}>

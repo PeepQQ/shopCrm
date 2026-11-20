@@ -6,17 +6,19 @@ import {
   ParseIntPipe,
   Post,
   Query,
+  Request,
 } from '@nestjs/common';
 import { SaleService } from './sale.service';
 import { CreateSaleDto, SalesHistoryQuery } from './dto';
+import { type Request as Requesttype } from 'express';
 
 @Controller('/admin/sale')
 export class SaleController {
   constructor(private readonly saleService: SaleService) {}
 
   @Post('/create')
-  async createSale(@Body() data: CreateSaleDto) {
-    return await this.saleService.create(data);
+  async createSale(@Request() req: Requesttype, @Body() data: CreateSaleDto) {
+    return await this.saleService.create(data, req.user!.id);
   }
 
   @Get('/:panelId/history')

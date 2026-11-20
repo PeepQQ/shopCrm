@@ -41,18 +41,36 @@ export class AuthService {
       },
     });
 
-    const accessToken = await this.jwtService.signAsync(
-      {
-        sub: user.id,
-        email: user.email,
+    const accessToken = await this.createAccessToken(user);
+    const refreshToken = await this.createRefreshToken(user);
+
+    await this.prisma.refreshToken.updateMany({
+      where: {
+        userId: user.id,
+        revokedAt: null,
       },
-      {
-        expiresIn: '30m',
+      data: {
+        revokedAt: new Date(),
       },
-    );
+    });
+
+    const refreshTokenHash = createHash('sha256')
+      .update(refreshToken)
+      .digest('hex');
+
+    const expiresAt = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000);
+
+    await this.prisma.refreshToken.create({
+      data: {
+        tokenHash: refreshTokenHash,
+        expiresAt,
+        userId: user.id,
+      },
+    });
 
     return {
       accessToken,
+      refreshToken,
     };
   }
 

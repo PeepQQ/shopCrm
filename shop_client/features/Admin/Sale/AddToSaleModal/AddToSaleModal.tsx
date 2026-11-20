@@ -8,6 +8,9 @@ import { add } from "@/store/sale/sale.slice";
 import { AddToSaleForm } from "./AddToSaleForm";
 
 import type { SaleItem } from "@/entities/sale";
+import { useStore } from "react-redux";
+import type { RootState } from "@/store/store";
+import { notify } from "@/shared/utils";
 
 interface AddToSaleModalProps {
   product: Product;
@@ -17,6 +20,7 @@ interface AddToSaleModalProps {
 export const AddToSaleModal = ({ product, children }: AddToSaleModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
+  const store = useStore<RootState>();
 
   const addToSaleCart = (data: SaleItem) => {
     dispatch(add(data));
@@ -25,6 +29,18 @@ export const AddToSaleModal = ({ product, children }: AddToSaleModalProps) => {
 
   const close = () => {
     setIsOpen(false);
+  };
+
+  const open = () => {
+    const currentSaleItems = store.getState().sale;
+    const isAvaible =
+      currentSaleItems.find((item) => item.product.id === product.id)?.product
+        .count !== 0;
+    if (!isAvaible) {
+      notify.error("Товар закончился");
+      return;
+    }
+    setIsOpen(true);
   };
 
   return (
@@ -37,7 +53,7 @@ export const AddToSaleModal = ({ product, children }: AddToSaleModalProps) => {
           <AddToSaleForm product={product} handleSubmit={addToSaleCart} />
         </ModalContent>
       </Modal>
-      <div className={styles.openElement} onClick={() => setIsOpen(true)}>
+      <div className={styles.openElement} onClick={open}>
         {children}
       </div>
     </>

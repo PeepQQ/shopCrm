@@ -30,6 +30,7 @@ export const OperationPanelSupply = () => {
         })),
       });
       dispatch(reset());
+      notify.success('Поставка успешно применена');
     } catch (err) {
       notify.apiError(err);
     }

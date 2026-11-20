@@ -1,7 +1,8 @@
 import { Product } from "../product";
+import { UserData } from "../user";
 
 export interface SaleItem {
-  id?: number;
+  id: number;
   count: number;
   discountPercent: number;
   price: number;
@@ -22,6 +23,7 @@ export interface Sale {
   createdAt: string;
   total: string;
   saleItems: SaleItem[];
+  user: UserData;
 }
 
 export interface SaleForAPI {
