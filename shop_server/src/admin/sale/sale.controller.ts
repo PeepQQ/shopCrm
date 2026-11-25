@@ -9,7 +9,7 @@ import {
   Request,
 } from '@nestjs/common';
 import { SaleService } from './sale.service';
-import { CreateSaleDto, SalesHistoryQuery } from './dto';
+import { CreateSaleDto, SalesHistoryDto } from './dto';
 import { type Request as Requesttype } from 'express';
 
 @Controller('/admin/sale')
@@ -24,7 +24,7 @@ export class SaleController {
   @Get('/:panelId/history')
   async getSalesList(
     @Param('panelId', ParseIntPipe) panelId: number,
-    @Query() query: SalesHistoryQuery,
+    @Query() query: SalesHistoryDto,
   ) {
     return await this.saleService.salesHistory(panelId, query);
   }

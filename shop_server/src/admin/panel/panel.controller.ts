@@ -1,5 +1,17 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { CreatePanelSupplyDto, PanelCreateDto } from './dto';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Query,
+} from '@nestjs/common';
+import {
+  CreatePanelSupplyDto,
+  GetPanelSaleStatisticsDto,
+  PanelCreateDto,
+} from './dto';
 import { PanelService } from './panel.service';
 
 @Controller('admin/panel')
@@ -27,5 +39,13 @@ export class PanelController {
     @Body() data: CreatePanelSupplyDto[],
   ) {
     return await this.panelService.createSupply(data, Number(panelId));
+  }
+
+  @Get(':panelId/statistics/sale')
+  async getPanelSaleStatistics(
+    @Param('panelId', ParseIntPipe) panelId: number,
+    @Query() query: GetPanelSaleStatisticsDto,
+  ) {
+    return await this.panelService.panelSaleStatistics(panelId, query);
   }
 }

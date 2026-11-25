@@ -5,7 +5,7 @@ import { SaleController } from './sale.controller';
 
 @Module({
   imports: [PrismaModule],
-  exports: [],
+  exports: [SaleService],
   providers: [SaleService],
   controllers: [SaleController],
 })

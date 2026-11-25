@@ -1,8 +1,9 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CreateSaleDto, SaleItemDto, SalesHistoryQuery } from './dto';
-import { Prisma } from 'src/generated/prisma/client';
+import { CreateSaleDto, SaleItemDto, SalesHistoryDto } from './dto';
+import { Prisma, Sale } from 'src/generated/prisma/client';
 import { moscowDayEnd, moscowDayStart, moscowTodayRange } from 'src/utils';
+import { SaleFindManyArgs, SaleInclude } from 'src/generated/prisma/models';
 
 @Injectable()
 export class SaleService {
@@ -28,7 +29,7 @@ export class SaleService {
 
   async salesHistory(
     panelId: number,
-    { date, dateEnd, dateStart }: SalesHistoryQuery,
+    { date, dateEnd, dateStart }: SalesHistoryDto,
   ) {
     const where: Prisma.SaleWhereInput = { panelId };
 
@@ -56,6 +57,31 @@ export class SaleService {
       },
       orderBy: { createdAt: 'desc' },
     });
+  }
+
+  async getSalesByDateRange({
+    panelId,
+    dateStart,
+    dateEnd,
+    prismaArgs,
+  }: {
+    panelId: number;
+    dateStart: Date;
+    dateEnd: Date;
+    prismaArgs?: SaleFindManyArgs;
+  }): Promise<Sale[] | []> {
+    const sales = await this.prisma.sale.findMany({
+      where: {
+        panelId,
+        createdAt: {
+          gte: dateStart,
+          lt: dateEnd,
+        },
+      },
+      ...prismaArgs,
+    });
+
+    return sales;
   }
 
   async createSaleItem(data: SaleItemDto, saleId: number) {

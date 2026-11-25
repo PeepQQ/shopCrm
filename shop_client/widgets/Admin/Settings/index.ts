@@ -1,1 +1,0 @@
-export { AdminSettingsLayout } from "./AdminSettingsLayout";

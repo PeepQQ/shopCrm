@@ -2,9 +2,9 @@ export const links = {
   login: "/login",
   admin: {
     root: "/admin",
-    settings: {
-      root: "/admin/settings",
-      inviteUser: "/admin/settings/inviteUser",
+    control: {
+      root: "/admin/control",
+      inviteUser: "/admin/control/inviteUser",
     },
     panel: (panelId: string | number) => ({
       root: `/admin/panel/${panelId}`,
@@ -25,6 +25,10 @@ export const links = {
         root: `/admin/panel/${panelId}/settings`,
         products: `/admin/panel/${panelId}/settings/products`,
         groups: `/admin/panel/${panelId}/settings/groups`,
+      },
+
+      statistics: {
+        root: `/admin/panel/${panelId}/statistics`,
       },
     }),
   },

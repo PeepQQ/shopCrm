@@ -1,9 +1,8 @@
 "use client";
 import styles from "./UserBar.module.scss";
 import { useAppSelector } from "@/shared/hooks";
-import { SettingsIcon } from "@/assets/icons";
-import Link from "next/link";
 import { links } from "@/shared/config/links";
+import { LinkButton } from "@/shared/components/LinkButton";
 
 export const UserBar = () => {
   const user = useAppSelector((state) => state.user);
@@ -11,9 +10,9 @@ export const UserBar = () => {
     <div className={styles.userBar}>
       <div className={styles.userBarHead}>
         <p>{user?.name}</p>
-        <Link href={links.admin.settings.root}>
-          <SettingsIcon width={18} />
-        </Link>
+        <LinkButton href={links.admin.control.root} size="sm">
+          Панель управления
+        </LinkButton>
       </div>
     </div>
   );

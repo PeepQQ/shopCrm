@@ -30,7 +30,7 @@ export class CreateSaleDto {
   saleItems!: SaleItemDto[];
 }
 
-export class SalesHistoryQuery {
+export class SalesHistoryDto {
   @IsOptional()
   @IsString()
   date?: string;

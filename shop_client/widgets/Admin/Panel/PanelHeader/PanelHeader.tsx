@@ -2,7 +2,6 @@
 import Link from "next/link";
 import styles from "./PanelHeader.module.scss";
 import { ProductFormModal } from "@/features/Admin/ProductFormModal";
-import { links } from "@/shared/config/links";
 import { useParams } from "next/navigation";
 import { panelHeaderLinks } from "./config";
 

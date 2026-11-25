@@ -1,12 +1,6 @@
 import { Type } from 'class-transformer';
-import {
-  IsArray,
-  IsEmail,
-  IsNumber,
-  IsOptional,
-  IsString,
-  ValidateNested,
-} from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
+import { type PanelStatisticsSplitType } from 'src/types';
 
 export class PanelCreateDto {
   @IsString()
@@ -24,4 +18,15 @@ export class CreatePanelSupplyDto {
 
   @IsNumber()
   count!: number;
+}
+
+export class GetPanelSaleStatisticsDto {
+  @IsString()
+  dateStart!: string;
+
+  @IsString()
+  dateEnd!: string;
+
+  @IsString()
+  splitType!: PanelStatisticsSplitType;
 }

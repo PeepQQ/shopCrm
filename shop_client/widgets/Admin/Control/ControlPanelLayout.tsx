@@ -1,11 +1,11 @@
-import styles from "./AdminSettingsLayout.module.scss";
+import styles from "./ControlPanelLayout.module.scss";
 import { SettingsHeader } from "./Header";
 
-interface AdminSettingsLayoutProps {
+interface ControlPanelLayoutProps {
   children: React.ReactNode;
 }
 
-export const AdminSettingsLayout = ({ children }: AdminSettingsLayoutProps) => {
+export const ControlPanelLayout = ({ children }: ControlPanelLayoutProps) => {
   return (
     <>
       <SettingsHeader />

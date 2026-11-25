@@ -7,7 +7,7 @@ export const SettingsHeader = () => {
     <div className={styles.settingsHeader}>
       <div className={styles.menu}>
         <NavLink
-          href={links.admin.settings.inviteUser}
+          href={links.admin.control.inviteUser}
           className={styles.linkItem}
           activeClassName={styles.active}
         >
